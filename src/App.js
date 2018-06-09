@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import LoginForm from './forms/LoginForm';
 
 class App extends Component {
     render () {
         return (
-            <div>Slack</div>
+            <div>
+                <LoginForm />
+            </div>
         );
     }
 }
