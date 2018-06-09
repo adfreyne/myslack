@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginForm from './forms/LoginForm';
 import NewChannelForm from './forms/NewChannelForm';
+import UserProfileForm from './forms/UserProfileForm';
 
 class App extends Component {
     render () {
@@ -9,6 +10,7 @@ class App extends Component {
             <div>
                 <LoginForm />
                 <NewChannelForm />
+                <UserProfileForm />
             </div>
         );
     }
