@@ -22,9 +22,7 @@ const routingTable = {
 
 class App extends Component {
     render () {
-        const {
-            location
-        } = this.props;
+        const { location } = this.props;
 
         let page;
         const route = routingTable[location];
@@ -33,11 +31,9 @@ class App extends Component {
         } else {
             page = route;
         }
-
         return (
             <div className="App">
-                <Navigation />
-                <hr />
+                <Navigation id="navbar" />
                 {page}
             </div>
         );

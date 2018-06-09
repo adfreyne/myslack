@@ -2,7 +2,7 @@ import React from 'react';
 import Link from './Link';
 
 const Navigation = () => (
-    <nav>
+    <nav id="navbar">
         <Link to="/">Login</Link>
         <Link to="/dashboard">Slack dashboard</Link>
         <Link to="/userprofile">User Profile</Link>

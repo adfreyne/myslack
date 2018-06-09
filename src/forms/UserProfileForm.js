@@ -58,10 +58,7 @@ class UserProfileForm extends PureComponent {
                 </div>
                 <div>
                     <button type="submit" >
-            Submit
-                    </button>
-                    <button type="button" >
-            Clear Values
+                        Submit changes
                     </button>
                 </div>
             </form>

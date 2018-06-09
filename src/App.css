@@ -15,7 +15,11 @@
   display: relative;
   width: 70%;
   background-color: #f0d296
-
+}
+#navbar{
+  position: absolute;
+  right: 50px;
+  top: 50px
 }
 body {
   margin: 1cm;
@@ -24,4 +28,21 @@ body {
   color: white;
   text-shadow: 1px 2px black;
   background-color: #3c7896; 
+}
+#loginform{
+  padding: 20;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  width: 300px;
+  height: 150px;
+  border-color: #3c3c3c;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 20px;
+  background-color: #b4965a;
+  text-align: center
+}
+#forgot{
+  font-size: 12px
 }

@@ -4,14 +4,10 @@ import { push } from 'redux-first-routing';
 
 class Link extends Component {
     render () {
-        const {
-            dispatch,
-            to,
-            children
-        } = this.props;
+        const { dispatch, to, children } = this.props;
 
         return (
-            <button onClick={(event) => {
+            <button id={to} onClick={(event) => {
                 event.preventDefault();
                 dispatch(push(to));
             }}>

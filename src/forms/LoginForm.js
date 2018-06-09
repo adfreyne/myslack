@@ -5,7 +5,7 @@ class LoginForm extends PureComponent {
     render () {
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id="loginform">
                 <div>
                     <label>Username</label>
                     <div>
@@ -13,6 +13,7 @@ class LoginForm extends PureComponent {
                             name="username"
                             component="input"
                             type="text"
+                            size="10"
                         />
                     </div>
                 </div>
@@ -23,17 +24,16 @@ class LoginForm extends PureComponent {
                             name="password"
                             component="input"
                             type="password"
+                            size="10"
                         />
                     </div>
                 </div>
                 <div>
                     <button type="submit" >
-            Submit
-                    </button>
-                    <button type="button" >
-            Clear Values
+                        Login
                     </button>
                 </div>
+                <div id="forgot">Forgot username/password</div>
             </form>
         );
     }
