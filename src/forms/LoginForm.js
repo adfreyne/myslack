@@ -9,23 +9,13 @@ class LoginForm extends PureComponent {
                 <div>
                     <label>Username</label>
                     <div>
-                        <Field
-                            name="username"
-                            component="input"
-                            type="text"
-                            size="10"
-                        />
+                        <Field name="username" component="input" type="text" size="10" />
                     </div>
                 </div>
                 <div>
                     <label>Password</label>
                     <div>
-                        <Field
-                            name="password"
-                            component="input"
-                            type="password"
-                            size="10"
-                        />
+                        <Field name="password" component="input" type="password" size="10" />
                     </div>
                 </div>
                 <div>
@@ -41,4 +31,5 @@ class LoginForm extends PureComponent {
 
 export default reduxForm({
     form: 'login'
+
 })(LoginForm);
