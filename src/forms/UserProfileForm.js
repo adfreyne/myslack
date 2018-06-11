@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { update } from '../store/profile';
 
 class UserProfileForm extends PureComponent {
     render () {
@@ -56,7 +57,15 @@ class UserProfileForm extends PureComponent {
         );
     }
 }
-
+const onSubmit = ({ firstname }, dispatch) => {
+    dispatch(
+        update(firstname));
+};
+const mapStateToProps = (state, firstname) => {
+    return { firstname: state.firstname };
+};
 export default reduxForm({
-    form: 'profile'
+    form: 'profile',
+    onSubmit,
+    mapStateToProps
 })(UserProfileForm);
