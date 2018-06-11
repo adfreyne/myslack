@@ -6,17 +6,31 @@ import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
     firstname: 'Adri',
-    lastname: '',
-    residence: '',
-    age: '',
-    interests: [],
+    lastname: 'De Freyne',
+    residence: 'Roosdaal',
+    age: '40',
+    interests: ['flying'],
     channels: [],
     activeChannel: '',
     users: []
 
 };
-
+export const update = (firstname, lastname, residence, age, interests) => ({
+    type: 'UPDATE',
+    payload: { firstname, lastname, residence, age, interests }
+});
 const reducer = (state = initialState, action) => {
+    if (action.type === 'UPDATE') {
+        const { firstname, lastname, residence, age, interests } = action.payload;
+        return {
+            firstname: firstname,
+            lastname: lastname,
+            residence: residence,
+            age: age,
+            interests: interests
+
+        };
+    }
     return state;
 };
 

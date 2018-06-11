@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-
+import { connect } from 'react-redux';
 
 class Dashboard extends PureComponent {
     render () {
@@ -27,7 +27,7 @@ class Dashboard extends PureComponent {
                             ...etc.
                         </div>
                     </div>
-                    <div id="messagelist">MessageList
+                    <div id="messagelist">MessageList:
                         <ul>Today's date
                             <li />
                             <li />
@@ -42,5 +42,7 @@ class Dashboard extends PureComponent {
         );
     }
 }
-
-export default Dashboard;
+const mapStateToProps = (state) => ({
+    firstname: state.firstname
+});
+export default connect(mapStateToProps)(Dashboard);

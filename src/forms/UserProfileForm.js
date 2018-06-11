@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { update } from '../store/profile';
+import { update } from '../store';
+import { connect } from 'react-redux';
 
 class UserProfileForm extends PureComponent {
     render () {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, lastname } = this.props;
+        console.log(lastname);
         return (
             <div id="userprofile">
                 <div>
@@ -47,7 +49,7 @@ class UserProfileForm extends PureComponent {
                         </button>
                     </div>
                 </form>
-                <div>About you:
+                <div>About you: {lastname}
                     <p />
                     <div>Member since:</div>
                     <p />
@@ -57,15 +59,19 @@ class UserProfileForm extends PureComponent {
         );
     }
 }
-const onSubmit = ({ firstname }, dispatch) => {
+const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) => {
     dispatch(
-        update(firstname));
+        update(firstname, lastname, residence, age, interests));
 };
-const mapStateToProps = (state, firstname) => {
-    return { firstname: state.firstname };
-};
-export default reduxForm({
+const mapStateToProps = (state) => ({
+    initialValues: state
+});
+
+UserProfileForm = reduxForm({
     form: 'profile',
-    onSubmit,
-    mapStateToProps
+    onSubmit
 })(UserProfileForm);
+
+UserProfileForm = connect(mapStateToProps)(UserProfileForm);
+
+export default UserProfileForm;

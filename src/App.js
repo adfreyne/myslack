@@ -22,7 +22,10 @@ const routingTable = {
 
 class App extends Component {
     render () {
-        const { location } = this.props;
+        const {
+            location
+        } = this.props;
+
         let date = new Date();
         let d = date.toDateString();
         let page;
@@ -43,6 +46,7 @@ class App extends Component {
 }
 const mapStateToProps = (state) => ({
     location: state.router.pathname,
-    firstname: state.firstname
+    firstname: state.firstname,
+    state
 });
 export default connect(mapStateToProps)(App);
