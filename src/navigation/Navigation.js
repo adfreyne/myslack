@@ -3,10 +3,10 @@ import Link from './Link';
 
 const Navigation = () => (
     <nav id="navbar">
-        <Link to="/">Login</Link>
-        <Link to="/dashboard">Slack dashboard</Link>
-        <Link to="/userprofile">User Profile</Link>
-        <Link to="/newchannel">Create a new channel</Link>
+        <Link className="link" to="/">Login</Link>
+        <Link className="link" to="/dashboard">Slack dashboard</Link>
+        <Link className="link" to="/userprofile">User Profile</Link>
+        <Link className="link" to="/newchannel">Create a new channel</Link>
     </nav>
 );
 

@@ -3,7 +3,7 @@
   width: 100%;
   text-align: center;
   color: black;
-  font-size:50px
+  font-size:35px
 }
 #messagesarea{
   display:flex
@@ -22,9 +22,15 @@
 #navbar{
   position: absolute;
   right: 50px;
-  top: 10px
+  top: 10px;
 }
+.link{
+  font-size:30px
+} 
+.input{
+  background-color: #f0d296
 
+}
 body {
   margin: 1cm;
   padding: 0;

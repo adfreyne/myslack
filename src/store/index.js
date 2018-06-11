@@ -5,7 +5,9 @@ import { createBrowserHistory, routerReducer, routerMiddleware, startListener } 
 import { reducer as formReducer } from 'redux-form';
 
 const initialState = {
+    workspace: 'Intec Front-End',
     firstname: 'Adri',
+    joined: 'June 11 2018',
     lastname: 'De Freyne',
     residence: 'Roosdaal',
     age: '40',

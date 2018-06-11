@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 class Dashboard extends PureComponent {
     render () {
-        const { firstname } = this.props;
+        const { workspace, joined } = this.props;
         return (
             <div>
-                <header id="header">Slack</header>
+                <header id="header">Searchable Log of All Conversation and Knowledge</header>
                 <div id="messagesarea">
                     <div id="sidebar">
-                        <div>User: {firstname}</div>
-                        <div>ChannelList
+                        <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
+                        <div>Channels:
                             <ul>
                                 <li />
                                 <li />
@@ -19,7 +19,7 @@ class Dashboard extends PureComponent {
                             </ul>
                             ...etc.
                         </div>
-                        <div>UserList
+                        <div>Users in your workspace:
                             <ul>
                                 <li />
                                 <li />
@@ -45,6 +45,7 @@ class Dashboard extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname
+    workspace: state.reducer.workspace,
+    joined: state.reducer.joined
 });
 export default connect(mapStateToProps)(Dashboard);
