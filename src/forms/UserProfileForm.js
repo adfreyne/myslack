@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { update } from '../store';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 
 class UserProfileForm extends PureComponent {
     render () {
-        const { handleSubmit, lastname } = this.props;
-        console.log(lastname);
+        const { handleSubmit } = this.props;
         return (
             <div id="userprofile">
                 <div>
@@ -49,8 +50,7 @@ class UserProfileForm extends PureComponent {
                         </button>
                     </div>
                 </form>
-                <div>About you: {lastname}
-                    <p />
+                <div>About you:
                     <div>Member since:</div>
                     <p />
                     <div>Active in channels:</div>
@@ -66,7 +66,13 @@ const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) 
 const mapStateToProps = (state) => ({
     initialValues: state
 });
-
+UserProfileForm.PropTypes = {
+    firstname: PropTypes.string,
+    lastname: PropTypes.string,
+    residence: PropTypes.string,
+    age: PropTypes.number,
+    handleSubmit: PropTypes
+};
 UserProfileForm = reduxForm({
     form: 'profile',
     onSubmit

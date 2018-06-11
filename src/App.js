@@ -44,6 +44,7 @@ class App extends Component {
         );
     }
 }
+
 const mapStateToProps = (state) => ({
     location: state.router.pathname,
     firstname: state.firstname,

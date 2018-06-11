@@ -19,7 +19,7 @@ export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',
     payload: { firstname, lastname, residence, age, interests }
 });
-const reducer = (state = initialState, action) => {
+const profile = (state = initialState, action) => {
     if (action.type === 'UPDATE') {
         const { firstname, lastname, residence, age, interests } = action.payload;
         return {
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-    reducer: reducer,
+    reducer: profile,
     router: routerReducer,
     form: formReducer
 });
