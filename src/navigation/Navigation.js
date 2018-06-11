@@ -7,7 +7,6 @@ const Navigation = () => (
         <Link to="/dashboard">Slack dashboard</Link>
         <Link to="/userprofile">User Profile</Link>
         <Link to="/newchannel">Create a new channel</Link>
-        <Link to="/error">Error</Link>
     </nav>
 );
 
