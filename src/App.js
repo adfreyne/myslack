@@ -47,7 +47,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
     location: state.router.pathname,
-    firstname: state.firstname,
     state
 });
 export default connect(mapStateToProps)(App);
