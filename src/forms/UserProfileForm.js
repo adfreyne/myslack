@@ -13,13 +13,23 @@ const data = {
 };
 class UserProfileForm extends PureComponent {
     render () {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;
+        let i = interests.toString();
         return (
             <div id="userprofile">
                 <div>
                     <img src="https://png.icons8.com/color/50/000000/magritte.png" width="200px" height="200px" />
                 </div>
+                <div><h3>About you:</h3>
+                    <ul>
+                        <li>{firstname} {lastname}, aged: {age}</li>
+                        <li>You live in {residence}</li>
+                        <li>Interests: {i}</li>
+                    </ul>
+                </div>
+
                 <form onSubmit={handleSubmit}>
+                    <div><h3>Update your profile ?</h3></div>
                     <div>
                         <label>First Name: </label>
                         <div>
@@ -56,12 +66,7 @@ class UserProfileForm extends PureComponent {
                         </button>
                     </div>
                 </form>
-                <div>About you:
-                    <div>Member since:</div>
-                    <p />
-                    <div>Active in channels:</div>
-                </div>
-            </div >
+            </div>
         );
     }
 }
@@ -70,7 +75,12 @@ const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) 
         update(firstname, lastname, residence, age, interests));
 };
 const mapStateToProps = (state) => ({
-    initialValues: data
+    initialValues: data,
+    firstname: state.reducer.firstname,
+    lastname: state.reducer.lastname,
+    residence: state.reducer.residence,
+    age: state.reducer.age,
+    interests: state.reducer.interests
 });
 UserProfileForm.propTypes = {
     firstname: PropTypes.string,
