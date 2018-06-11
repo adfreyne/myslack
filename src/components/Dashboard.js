@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 class Dashboard extends PureComponent {
     render () {
+        const { firstname } = this.props;
         return (
             <div>
                 <header id="header">Slack</header>
                 <div id="messagesarea">
                     <div id="sidebar">
+                        <div>User: {firstname}</div>
                         <div>ChannelList
                             <ul>
                                 <li />
@@ -43,6 +45,6 @@ class Dashboard extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    firstname: state.firstname
+    firstname: state.reducer.firstname
 });
 export default connect(mapStateToProps)(Dashboard);

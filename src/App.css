@@ -62,3 +62,6 @@ button:hover {
   background-color: #f0d296
 
 }
+#loggedInAs {
+  text-transform: uppercase
+}
