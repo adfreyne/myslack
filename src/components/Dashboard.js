@@ -7,13 +7,37 @@ class Dashboard extends PureComponent {
             <div>
                 <header id="header">Slack</header>
                 <div id="messagesarea">
-                    <div id="sidebar">Sidebar
-                        <div>ChannelList </div>
-                        <div>UserList </div>
+                    <div id="sidebar">
+                        <div>ChannelList
+                            <ul>
+                                <li />
+                                <li />
+                                <li />
+                                <li />
+                            </ul>
+                            ...etc.
+                        </div>
+                        <div>UserList
+                            <ul>
+                                <li />
+                                <li />
+                                <li />
+                                <li />
+                            </ul>
+                            ...etc.
+                        </div>
                     </div>
-                    <div id="messagelist">MessageList </div>
+                    <div id="messagelist">MessageList
+                        <ul>Today's date
+                            <li />
+                            <li />
+                            <li />
+                            <li />
+                            <li />
+                            <li />
+                        </ul>
+                    </div>
                 </div>
-                <footer>Footer</footer>
             </div>
         );
     }
