@@ -11,6 +11,7 @@ const initialState = {
     age: '40',
     interests: ['flying'],
     channels: [],
+    subscribedChannels: [],
     activeChannel: '',
     users: []
 

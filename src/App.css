@@ -14,8 +14,6 @@
   background-color:#b45a1e
 
 }
-#userprofile{
-}
 #messagelist{
   display: relative;
   width: 70%;
@@ -26,9 +24,7 @@
   right: 50px;
   top: 10px
 }
-#loginpage{
-  
-}
+
 body {
   margin: 1cm;
   padding: 0;
