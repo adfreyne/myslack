@@ -3,6 +3,9 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory, routerReducer, routerMiddleware, startListener } from 'redux-first-routing';
 import { reducer as formReducer } from 'redux-form';
+import { reducer as websocketReducer, middleware as websocketMiddleware } from './websocket';
+import { reducer as messagesReducer } from './messages';
+
 
 const initialState = {
     workspace: 'Intec Front-End',
@@ -11,7 +14,7 @@ const initialState = {
     lastname: 'De Freyne',
     residence: 'Roosdaal',
     age: '40',
-    interests: ['flying'],
+    interests: ['running', 'coding'],
     channels: [],
     subscribedChannels: [],
     activeChannel: '',
@@ -61,13 +64,16 @@ const rootReducer = combineReducers({
     reducer: profile,
     router: routerReducer,
     form: formReducer,
-    chat: chat
+    chat: chat,
+    websocket: websocketReducer,
+    messages: messagesReducer
 });
 
 const middleware = routerMiddleware(history);
+const middlewareWebsocket = applyMiddleware(websocketMiddleware("ws://localhost:8085/api/stream"));
 
 const store = createStore(rootReducer, composeWithDevTools(
-    applyMiddleware(middleware),
+    applyMiddleware(middleware), middlewareWebsocket
 ));
 
 startListener(history, store);

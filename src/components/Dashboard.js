@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Chatbox from './Chatbox';
+import WebSocket from './Websocket';
 
 class Dashboard extends PureComponent {
     render () {
@@ -34,6 +35,7 @@ class Dashboard extends PureComponent {
                     </div>
                     <div id="messagelist">MessageList: <hr />
                         <Chatbox />
+                        <WebSocket />
                     </div>
                 </div>
             </div>
