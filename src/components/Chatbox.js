@@ -6,7 +6,7 @@ import { send } from '../store/index.js';
 class Chatbox extends PureComponent {
     render () {
         const { messages, handleSubmit } = this.props;
-        let m = messages.map((message) => <li key={message}>{message}</li>);
+        let m = messages.map((message, index) => <li key={index}>{message}</li>);
         return (
             <div>
                 <div>Chatbox:
@@ -34,7 +34,7 @@ const onSubmit = ({ message }, dispatch) => {
     dispatch(send(message));
 };
 const mapStateToProps = (state) => ({
-    messages: state.reducer.messages
+    messages: state.chat.messages
 });
 
 Chatbox = reduxForm({

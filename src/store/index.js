@@ -16,7 +16,7 @@ const initialState = {
     subscribedChannels: [],
     activeChannel: '',
     users: [],
-    messages: ['Hello', 'Ciao']
+    messages: []
 
 };
 export const send = (message) => ({
@@ -27,11 +27,11 @@ export const send = (message) => ({
 const chat = (state = initialState, action) => {
     if (action.type === 'SEND') {
         const { message } = action.payload;
-        console.log('test');
-        console.log(message);
-        console.log(state.messages);
+        console.log('test'); //eslint-disable-line
+        console.log(message);//eslint-disable-line
+        console.log(state.messages);//eslint-disable-line
         return {
-            messages: [message, ...state.messages]
+            messages: [...state.messages, message]
         };
     }
     return state;
