@@ -3,7 +3,6 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory, routerReducer, routerMiddleware, startListener } from 'redux-first-routing';
 import { reducer as formReducer } from 'redux-form';
-import reducer from './chat.js';
 
 const initialState = {
     workspace: 'Intec Front-End',
@@ -20,6 +19,23 @@ const initialState = {
     messages: ['Hello', 'Ciao']
 
 };
+export const send = (message) => ({
+    type: 'SEND',
+    payload: { message }
+});
+
+const chat = (state = initialState, action) => {
+    if (action.type === 'SEND') {
+        const { message } = action.payload;
+        console.log('test');
+        console.log(message);
+        console.log(state.messages);
+        return {
+            messages: [message, ...state.messages]
+        };
+    }
+    return state;
+};
 export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',
     payload: { firstname, lastname, residence, age, interests }
@@ -34,7 +50,6 @@ const profile = (state = initialState, action) => {
             residence: residence,
             age: age,
             interests: interests
-
         };
     }
     return state;
@@ -46,7 +61,7 @@ const rootReducer = combineReducers({
     reducer: profile,
     router: routerReducer,
     form: formReducer,
-    chat: reducer
+    chat: chat
 });
 
 const middleware = routerMiddleware(history);

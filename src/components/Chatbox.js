@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { send } from '../store/chat.js';
+import { send } from '../store/index.js';
 
 class Chatbox extends PureComponent {
     render () {
@@ -15,9 +15,9 @@ class Chatbox extends PureComponent {
                     </ul>
                     <form onSubmit={handleSubmit}>
                         <div>
-                            <label>Interests</label>
+                            <label />
                             <div>
-                                <Field className="input" name="interests" component="input" type="text" />
+                                <Field className="input" name="message" component="input" type="text" />
                             </div>
                         </div>
                         <div>
