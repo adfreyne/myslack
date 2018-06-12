@@ -4,13 +4,7 @@ import { update } from '../store';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const data = {
-    firstname: 'Adriaan',
-    lastname: 'De Freyne',
-    residence: 'Roosdaal',
-    age: '41',
-    interests: ['flying']
-};
+
 class UserProfileForm extends PureComponent {
     render () {
         const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;//eslint-disable-line
@@ -75,7 +69,7 @@ const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) 
         update(firstname, lastname, residence, age, interests));
 };
 const mapStateToProps = (state) => ({
-    initialValues: data,
+    initialValues: state.reducer,
     firstname: state.reducer.firstname,
     lastname: state.reducer.lastname,
     residence: state.reducer.residence,
