@@ -22,7 +22,7 @@ const routingTable = {
 
 class App extends Component {
     render () {
-        const { location, firstname } = this.props;
+        const { location, firstname } = this.props;//eslint-disable-line
 
         let date = new Date();
         let d = date.toDateString();

@@ -5,7 +5,7 @@ import { send } from '../store/index.js';
 
 class Chatbox extends PureComponent {
     render () {
-        const { messages, handleSubmit } = this.props;
+    const { messages, handleSubmit } = this.props;//eslint-disable-line
         let m = messages.map((message, index) => <li key={index}>{message}</li>);
         return (
             <div>

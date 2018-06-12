@@ -4,7 +4,7 @@ import Chatbox from './Chatbox';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined } = this.props;
+        const { workspace, joined } = this.props;//eslint-disable-line
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>

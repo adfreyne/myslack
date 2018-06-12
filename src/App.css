@@ -28,7 +28,8 @@
   font-size:30px
 } 
 .input{
-  background-color: #f0d296
+  background-color: #3c5a78;
+color:white
 
 }
 body {
@@ -36,7 +37,7 @@ body {
   padding: 0;
   font-family: "Exo";
   color: white;
-  text-shadow: 1px 2px black;
+  
   background-color: #3c7896; 
 }
 #loginform{
@@ -70,4 +71,7 @@ button:hover {
 #userprofile{
   display: flex;
   justify-content: space-around
+}
+li {
+  color:black
 }

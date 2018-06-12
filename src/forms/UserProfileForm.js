@@ -13,7 +13,7 @@ const data = {
 };
 class UserProfileForm extends PureComponent {
     render () {
-        const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;
+        const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;//eslint-disable-line
         let i = interests.toString();
         return (
             <div id="userprofile">

@@ -4,7 +4,7 @@ import { push } from 'redux-first-routing';
 
 class Link extends Component {
     render () {
-        const { dispatch, to, children } = this.props;
+        const { dispatch, to, children } = this.props;//eslint-disable-line
 
         return (
             <button id={to} onClick={(event) => {
