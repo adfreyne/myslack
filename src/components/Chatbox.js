@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { send } from '../store/index.js';
 
 class Chatbox extends PureComponent {
     render () {
-    const { messages, handleSubmit } = this.props;//eslint-disable-line
+        const { messages, handleSubmit } = this.props;//eslint-disable-line
         let m = messages.map((message, index) => <li key={index}>{message}</li>);
         return (
             <div>
@@ -32,6 +32,7 @@ class Chatbox extends PureComponent {
 }
 const onSubmit = ({ message }, dispatch) => {
     dispatch(send(message));
+    dispatch(reset('chat'));
 };
 const mapStateToProps = (state) => ({
     messages: state.chat.messages

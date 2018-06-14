@@ -4,20 +4,25 @@ import { connect } from 'react-redux';
 import { update } from '../store';
 
 class LoginForm extends PureComponent {
+    constructor () {
+        super();
+        this.state = { firstname: '' };
+    }
     render () {
-        const { handleSubmit, firstname, password } = this.props;
+        const { firstname } = this.state;
+        const { handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit} id="loginform">
                 <div>
                     <label>Firstname</label>
                     <div>
-                        <Field name="firstname" component="input" type="text" size="10" />
+                        <Field name="firstname" component="input" type="text" size="10" value="" />
                     </div>
                 </div>
                 <div>
                     <label>Password</label>
                     <div>
-                        <Field name="password" component="input" type="password" size="10" />
+                        <Field name="password" component="input" type="password" size="10" value="" />
                     </div>
                 </div>
                 <div>

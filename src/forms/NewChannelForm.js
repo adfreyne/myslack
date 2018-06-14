@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeChannel } from '../store/makeChannel';
@@ -40,6 +40,7 @@ class NewChannelForm extends PureComponent {
 }
 const onSubmit = ({ channel }, dispatch) => {
     dispatch(makeChannel(channel));
+    dispatch(reset('channel'));
 };
 const mapStateToProps = (state) => ({
     channel: state.channel.channel,

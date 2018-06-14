@@ -21,7 +21,8 @@ const initialState = {
     activeChannel: '',
     users: ['Adri'],
     messages: [],
-    connected: false
+    connected: false,
+    loggedOn: false
 
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
