@@ -5,7 +5,7 @@ import { createBrowserHistory, routerReducer, routerMiddleware, startListener } 
 import { reducer as formReducer } from 'redux-form';
 import { reducer as websocketReducer, middleware as websocketMiddleware } from './websocket';
 import { reducer as messagesReducer } from './messages';
-
+import { reducer as channelReducer } from './makeChannel';
 
 const initialState = {
     workspace: 'Intec Front-End',
@@ -50,6 +50,7 @@ const rootReducer = combineReducers({
     router: routerReducer,
     form: formReducer,
     // chat: chat,
+    channel: channelReducer,
     websocket: websocketReducer,
     messages: messagesReducer
 });

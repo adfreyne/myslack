@@ -1,55 +1,57 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { makeChannel } from '../store/makeChannel';
+
 
 class NewChannelForm extends PureComponent {
     render () {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, channels } = this.props;//eslint-disable-line
+        let c = channels.map((channel, index) => <li key={index}>{channel}</li>);
+
         return (
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name</label>
+            <div id="channelform">
+
+                <div><h3>Existing channels</h3>
+                    <ul>
+                        {c}
+                    </ul>
+                </div>
+
+                <form onSubmit={handleSubmit}>
+                    <div><h3>Make a new channel</h3></div>
                     <div>
-                        <Field
-                            name="channelname"
-                            component="input"
-                            type="text"
-                        />
+                        <label>New Channel Name: </label>
+                        <div>
+                            <Field className="input" name="channel" component="input" type="text" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Description/Purpose</label>
+
                     <div>
-                        <Field
-                            name="description"
-                            component="input"
-                            type="text"
-                        />
+                        <button type="submit" >
+                            Add channel
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <label>Send invites to:</label>
-                    <div>
-                        <Field
-                            name="invites"
-                            component="select"
-                            type="text"
-                            placeholder="search by name"
-                        />
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" >
-            Submit
-                    </button>
-                    <button type="button" >
-            Clear Values
-                    </button>
-                </div>
-            </form>
+                </form>
+            </div>
         );
     }
 }
-
-export default reduxForm({
-    form: 'channel'
+const onSubmit = ({ channel }, dispatch) => {
+    dispatch(makeChannel(channel));
+};
+const mapStateToProps = (state) => ({
+    channel: state.channel.channel,
+    channels: state.channel.channels
+});
+NewChannelForm.propTypes = {
+    channel: PropTypes.string
+};
+NewChannelForm = connect(mapStateToProps)(NewChannelForm);
+NewChannelForm = reduxForm({
+    form: 'channel',
+    onSubmit
 })(NewChannelForm);
+
+export default NewChannelForm;
