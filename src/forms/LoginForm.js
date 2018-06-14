@@ -21,7 +21,7 @@ class LoginForm extends PureComponent {
                     </div>
                 </div>
                 <div>
-                    <button type="submit" >
+                    <button type="submit" disabled="true" >
                         Login
                     </button>
                 </div>
