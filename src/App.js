@@ -6,6 +6,7 @@ import LoginForm from './forms/LoginForm';
 import Dashboard from './components/Dashboard';
 import UserProfileForm from './forms/UserProfileForm';
 import NewChannelForm from './forms/NewChannelForm';
+import LoggedInMessage from './components/LoggedInMessage';
 
 const Login = () => <div><LoginForm /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
@@ -23,9 +24,6 @@ const routingTable = {
 class App extends Component {
     render () {
         const { location, firstname } = this.props;//eslint-disable-line
-
-        let date = new Date();
-        let d = date.toDateString();
         let page;
         const route = routingTable[location];
         if (!route) {
@@ -36,7 +34,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Navigation id="navbar" />
-                <p id="loggedInAs">{d} - Logged in as: {firstname}</p>
+                <LoggedInMessage />
                 {page}
             </div>
         );
@@ -44,6 +42,8 @@ class App extends Component {
 }
 const mapStateToProps = (state) => ({
     location: state.router.pathname,
-    firstname: state.reducer.firstname
+    firstname: state.reducer.firstname,
+    connected: state.messages.connected
+
 });
 export default connect(mapStateToProps)(App);

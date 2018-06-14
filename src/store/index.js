@@ -19,7 +19,8 @@ const initialState = {
     subscribedChannels: [],
     activeChannel: '',
     users: [],
-    messages: []
+    messages: [],
+    connected: false
 
 };
 export const send = (message) => ({
