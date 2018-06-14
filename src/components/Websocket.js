@@ -43,6 +43,8 @@ class WebSocket extends Component {
               <div>
           Send message:
                   <textarea
+                      className="input" rows="4" cols="40"
+                      id="chatInput"
                       value={input}
                       onChange={(e) => this.setState({ input: e.target.value })} />
 

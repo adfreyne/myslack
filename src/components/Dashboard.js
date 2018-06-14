@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Chatbox from './Chatbox';
+// import Chatbox from './Chatbox';
 import WebSocket from './Websocket';
 
 class Dashboard extends PureComponent {
@@ -33,9 +33,15 @@ class Dashboard extends PureComponent {
                             ...etc.
                         </div>
                     </div>
-                    <div id="messagelist">MessageList: <hr />
-                        <Chatbox />
+                    <div id="messagelist">Messages: <hr />
+                        {/* <Chatbox /> */}
                         <WebSocket />
+                        {/*
+{ "command": "echo", "payload": "this will be sent back" }
+{ "command": "name", "name": "olmo" }
+{ "command": "join", "channel": "#test" }
+{ "command": "message", "channel": "#test", "message": "hello world!"}
+                        */}
                     </div>
                 </div>
             </div>
