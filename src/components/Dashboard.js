@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 // import Chatbox from './Chatbox';
 import WebSocket from './Websocket';
+import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
     render () {
@@ -16,6 +17,8 @@ class Dashboard extends PureComponent {
                         <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
                         <hr />
                         <div>Channels:
+                            <NewChannelButton />
+
                             <ul>
                                 {c}
                             </ul>

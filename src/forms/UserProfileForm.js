@@ -64,9 +64,9 @@ class UserProfileForm extends PureComponent {
         );
     }
 }
-const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) => {
+const onSubmit = ({ firstname, lastname, residence, age, interests, users }, dispatch) => {
     dispatch(
-        update(firstname, lastname, residence, age, interests));
+        update(firstname, lastname, residence, age, interests, users));
 };
 const mapStateToProps = (state) => ({
     initialValues: state.reducer,
@@ -74,7 +74,8 @@ const mapStateToProps = (state) => ({
     lastname: state.reducer.lastname,
     residence: state.reducer.residence,
     age: state.reducer.age,
-    interests: state.reducer.interests
+    interests: state.reducer.interests,
+    users: state.reducer.users
 });
 UserProfileForm.propTypes = {
     firstname: PropTypes.string,

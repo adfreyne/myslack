@@ -5,13 +5,13 @@ import { update } from '../store';
 
 class LoginForm extends PureComponent {
     render () {
-        const { handleSubmit, username, password } = this.props;
+        const { handleSubmit, firstname, password } = this.props;
         return (
             <form onSubmit={handleSubmit} id="loginform">
                 <div>
-                    <label>Username</label>
+                    <label>Firstname</label>
                     <div>
-                        <Field name="username" component="input" type="text" size="10" />
+                        <Field name="firstname" component="input" type="text" size="10" />
                     </div>
                 </div>
                 <div>
@@ -25,17 +25,17 @@ class LoginForm extends PureComponent {
                         Login
                     </button>
                 </div>
-                <div id="forgot">Forgot username/password</div>
+                <div id="forgot">Forgot firstname/password</div>
             </form>
         );
     }
 }
-const onSubmit = ({ username, password }, dispatch) => {
+const onSubmit = ({ firstname, password }, dispatch) => {
     dispatch(
-        update(username, password));
+        update(firstname, password));
 };
 const mapStateToProps = (state) => ({
-    username: state.reducer.username,
+    firstname: state.reducer.firstname,
     password: state.reducer.password
 });
 LoginForm = connect(mapStateToProps)(LoginForm);

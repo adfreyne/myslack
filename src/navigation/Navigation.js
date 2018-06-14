@@ -6,7 +6,7 @@ const Navigation = () => (
         <Link className="link" to="/">Login</Link>
         <Link className="link" to="/dashboard">Slack dashboard</Link>
         <Link className="link" to="/userprofile">User Profile</Link>
-        <Link className="link" to="/newchannel">Create a new channel</Link>
+        {/* <Link className="link" to="/newchannel">Create a new channel</Link> */}
     </nav>
 );
 
