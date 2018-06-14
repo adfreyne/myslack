@@ -5,7 +5,8 @@ import WebSocket from './Websocket';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined } = this.props;//eslint-disable-line
+        const { workspace, joined, users } = this.props;//eslint-disable-line
+        let u = users.map((user, index) => <li key={index}>{user}</li>);
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -25,10 +26,7 @@ class Dashboard extends PureComponent {
                         <hr />
                         <div>Users in your workspace:
                             <ul>
-                                <li />
-                                <li />
-                                <li />
-                                <li />
+                                {u}
                             </ul>
                             ...etc.
                         </div>
@@ -50,6 +48,7 @@ class Dashboard extends PureComponent {
 }
 const mapStateToProps = (state) => ({
     workspace: state.reducer.workspace,
-    joined: state.reducer.joined
+    joined: state.reducer.joined,
+    users: state.reducer.users
 });
 export default connect(mapStateToProps)(Dashboard);

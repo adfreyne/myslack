@@ -14,31 +14,14 @@ const initialState = {
     lastname: 'De Freyne',
     residence: 'Roosdaal',
     age: '40',
-    interests: ['running', 'coding'],
-    channels: [],
+    interests: ['coding', 'reading'],
+    channels: ['test'],
     subscribedChannels: [],
     activeChannel: '',
-    users: [],
+    users: ['Adri'],
     messages: [],
     connected: false
 
-};
-export const send = (message) => ({
-    type: 'SEND',
-    payload: { message }
-});
-
-const chat = (state = initialState, action) => {
-    if (action.type === 'SEND') {
-        const { message } = action.payload;
-        console.log('test'); //eslint-disable-line
-        console.log(message);//eslint-disable-line
-        console.log(state.messages);//eslint-disable-line
-        return {
-            messages: [...state.messages, message]
-        };
-    }
-    return state;
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',
@@ -65,7 +48,7 @@ const rootReducer = combineReducers({
     reducer: profile,
     router: routerReducer,
     form: formReducer,
-    chat: chat,
+    // chat: chat,
     websocket: websocketReducer,
     messages: messagesReducer
 });
