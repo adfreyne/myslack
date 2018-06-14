@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { update } from '../store';
 
 class LoginForm extends PureComponent {
     render () {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, username, password } = this.props;
         return (
             <form onSubmit={handleSubmit} id="loginform">
                 <div>
@@ -28,8 +30,16 @@ class LoginForm extends PureComponent {
         );
     }
 }
-
+const onSubmit = ({ username, password }, dispatch) => {
+    dispatch(
+        update(username, password));
+};
+const mapStateToProps = (state) => ({
+    username: state.reducer.username,
+    password: state.reducer.password
+});
+LoginForm = connect(mapStateToProps)(LoginForm);
 export default reduxForm({
-    form: 'login'
-
+    form: 'login',
+    onSubmit
 })(LoginForm);

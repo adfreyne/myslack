@@ -10,6 +10,7 @@ import { reducer as messagesReducer } from './messages';
 const initialState = {
     workspace: 'Intec Front-End',
     firstname: 'Adri',
+    password: 'password',
     joined: 'June 11 2018',
     lastname: 'De Freyne',
     residence: 'Roosdaal',
