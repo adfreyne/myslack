@@ -5,7 +5,7 @@ import WebSocket from './Websocket';
 import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
-    render () {
+    render() {
         const { workspace, joined, users, channels } = this.props;//eslint-disable-line
         let c = channels.map((channel, index) => <li key={index}>{channel}</li>);
         let u = users.map((user, index) => <li key={index}>{user}</li>);
@@ -33,14 +33,18 @@ class Dashboard extends PureComponent {
                         </div>
                     </div>
                     <div id="messagelist">Messages: <hr />
+                        Possible commands:
+                        <ul>
+                            <li>"command": "echo", "payload": "this will be sent back" }',</li>
+                            <li>"command": "name", "name": "olmo" }',</li>
+                            <li>"command": "users" }',</li>
+                            <li>"command": "join", "channel": "#test" }',</li>
+                            <li>"command": "channels" }',</li>
+                            <li>"command": "message", "channel": "#test", "message": "hello world!" }',</li>
+                            <li>"command": "part", "</li>channel": "#test" }',
+                                </ul>
                         {/* <Chatbox /> */}
                         <WebSocket />
-                        {/*
-{ "command": "echo", "payload": "this will be sent back" }
-{ "command": "name", "name": "olmo" }
-{ "command": "join", "channel": "#test" }
-{ "command": "message", "channel": "#test", "message": "hello world!"}
-                        */}
                     </div>
                 </div>
             </div>

@@ -1,7 +1,11 @@
+// you can dispatch these actions to affect the websocket.
+
 export const connect = 'WEBSOCKET_CONNECT';
 export const disconnect = 'WEBSOCKET_DISCONNECT';
 export const send = 'WEBSOCKET_SEND';
 
+// you can listen for these actions,
+// they are dispatched by the middleware
 export const open = 'WEBSOCKET_OPEN';
 export const close = 'WEBSOCKET_CLOSE';
 export const message = 'WEBSOCKET_MESSAGE';
@@ -10,7 +14,7 @@ export const middleware = endpoint => store => {
     let websocket = null;
 
     const init = () => {
-    websocket = new WebSocket(endpoint);//eslint-disable-line
+        websocket = new WebSocket(endpoint);//eslint-disable-line
         websocket.addEventListener('open', evt => {
             store.dispatch({ type: open });
         });
@@ -38,7 +42,7 @@ export const middleware = endpoint => store => {
                 break;
 
             case send:
-                websocket.send(action.payload);
+                websocket.send(JSON.stringify(action.payload));
                 break;
 
             default:

@@ -8,18 +8,26 @@ class WebSocket extends Component {
         this.state = { input: '' };
     }
 
-    renderExample = (message) => {
+    enderExample = (message) => {
+        const handler = event => {
+            this.props.dispatch({ type: send, payload: JSON.parse(message) });
+            this.setState({
+                input: message
+            });
+        };
+
         return (
             <li>
                 <code>{message}</code>
                 <button className="try"
                     disabled={this.props.disconnected}
-                    href="." onClick={() => this.props.dispatch({ type: send, payload: message })}>
+                    onClick={handler}>
                     try
                 </button>
             </li>
         );
     }
+
     renderMessage (message, idx) {
         return (
             <li key={idx}>
