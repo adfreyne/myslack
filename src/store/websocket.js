@@ -25,7 +25,7 @@ export const middleware = endpoint => store => {
         });
 
         websocket.addEventListener('message', evt => {
-            store.dispatch({ type: message, payload: evt.data });
+            store.dispatch({ type: message, payload: JSON.parse(evt.data) });
         });
     };
 
@@ -42,7 +42,7 @@ export const middleware = endpoint => store => {
                 break;
 
             case send:
-                websocket.send(JSON.stringify(action.payload));
+                websocket.send(action.payload);
                 break;
 
             default:
