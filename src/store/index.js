@@ -16,7 +16,7 @@ const initialState = {
     residence: 'Roosdaal',
     age: '40',
     interests: ['coding', 'reading'],
-    channels: ['test'],
+    channels: [],
     subscribedChannels: [],
     activeChannel: '',
     users: ['Adri'],
