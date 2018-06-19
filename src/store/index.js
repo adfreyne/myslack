@@ -7,6 +7,8 @@ import { reducer as websocketReducer, middleware as websocketMiddleware } from '
 import { reducer as messagesReducer } from './messages';
 import { reducer as channelReducer } from './makeChannel';
 import { reducer as receivedReducer } from './receivedMessages';
+import { reducer as usersReducer } from './usersOnline';
+
 
 const initialState = {
     workspace: 'Intec Front-End',
@@ -20,7 +22,7 @@ const initialState = {
     channels: [],
     subscribedChannels: [],
     activeChannel: '',
-    users: ['Adri'],
+    users: [],
     messages: [],
     connected: false,
     loggedOn: false,
@@ -57,7 +59,8 @@ const rootReducer = combineReducers({
     channel: channelReducer,
     websocket: websocketReducer,
     messages: messagesReducer,
-    received: receivedReducer
+    received: receivedReducer,
+    users: usersReducer
 });
 
 const middleware = routerMiddleware(history);

@@ -19,26 +19,25 @@ class Dashboard extends PureComponent {
                         <hr />
                         <div>Channels:
                             <NewChannelButton />
-
                             <ul>
                                 {c}
                             </ul>
-                            ...etc.
                         </div>
                         <hr />
                         <div>Users in your workspace:
                             <ul>
                                 {u}
                             </ul>
-                            ...etc.
                         </div>
+                        <hr />
                         <div id="messageschatbox">Messages:
                             <ul>{m}</ul>
                         </div>
+                        <hr />
                     </div>
                     <div id="messagelist">Messages: <hr />
                         Possible commands:
-                        <ul>
+                        <ul id="commands">
                             <li>{"{"}"command": "echo", "payload": "this will be sent back" }</li>
                             <li>{"{"}"command": "name", "name": "Adri" }</li>
                             <li>{"{"}"command": "users" }</li>
@@ -48,6 +47,7 @@ class Dashboard extends PureComponent {
                             <li>{"{"}"command": "message", "channel": "#test", "message": "hello world!" }</li>
                             <li>{"{"}"command": "part", "channel": "#test" }</li>
                         </ul>
+                        <button>Connect to back-end chat-box</button>
                         {/* <Chatbox /> */}
                         <WebSocket />
                     </div>
@@ -59,7 +59,7 @@ class Dashboard extends PureComponent {
 const mapStateToProps = (state) => ({
     workspace: state.reducer.workspace,
     joined: state.reducer.joined,
-    users: state.reducer.users,
+    users: state.users.users,
     channels: state.channel.channels,
     received: state.received.received
 });

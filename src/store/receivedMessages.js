@@ -19,8 +19,11 @@ export const reducer = (state = initialState, action) => {
                 let cmd = action.payload.user + " sends : " + action.payload.message;
                 return { received: [...state.received, cmd] };
             }
-
-            let incoming = JSON.stringify(action.payload);
+            if (action.payload.channel && action.payload.message) {
+                let cmd = "Message on channel " + action.payload.channel + " : " + action.payload.message;
+                return { received: [...state.received, cmd] };
+            }
+            // let incoming = JSON.stringify(action.payload);
             // case close:
             //     return { log: [...state.log, "websocket disconnected"] };
         default:

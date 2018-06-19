@@ -55,7 +55,6 @@ class WebSocket extends Component {
                         id="chatInput"
                         value={input}
                         onChange={(e) => this.setState({ input: e.target.value })} />
-
                     <button onClick={() => {
                         dispatch({ type: send, payload: input });
                     }}
@@ -65,7 +64,7 @@ class WebSocket extends Component {
                 </div>
                 <div>
                     <p>Websocket activity:</p>
-                    <ul>
+                    <ul id="websocket-activity">
                         {messages.map(this.renderMessage)}
                     </ul>
                 </div>

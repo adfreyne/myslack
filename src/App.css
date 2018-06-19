@@ -84,3 +84,10 @@ li {
   word-wrap: break-word;
    width: 300px;
 }
+#commands{
+  font-size: 12px
+}
+#websocket-activity{
+  font-size: 12px
+
+}
