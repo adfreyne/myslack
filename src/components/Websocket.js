@@ -10,7 +10,7 @@ class WebSocket extends Component {
 
     enderExample = (message) => {
         const handler = event => {
-            this.props.dispatch({ type: send, payload: JSON.parse(message) });
+            this.props.dispatch({ type: send, payload: JSON.parse(message) });//eslint-disable-line
             this.setState({
                 input: message
             });
@@ -20,7 +20,7 @@ class WebSocket extends Component {
             <li>
                 <code>{message}</code>
                 <button className="try"
-                    disabled={this.props.disconnected}
+                    disabled={this.props.disconnected}//eslint-disable-line
                     onClick={handler}>
                     try
                 </button>
@@ -41,9 +41,9 @@ class WebSocket extends Component {
         } = this.state;
 
         const {
-            dispatch,
-            disconnected,
-            messages
+            dispatch,//eslint-disable-line
+            disconnected,//eslint-disable-line
+            messages//eslint-disable-line
         } = this.props;
 
         return (

@@ -36,15 +36,12 @@ export const middleware = endpoint => store => {
             case connect:
                 init(endpoint);
                 break;
-
             case disconnect:
                 websocket.close();
                 break;
-
             case send:
                 websocket.send(action.payload);
                 break;
-
             default:
                 break;
         }

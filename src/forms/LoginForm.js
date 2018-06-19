@@ -9,7 +9,6 @@ class LoginForm extends PureComponent {
         this.state = { firstname: '' };
     }
     render () {
-        const { firstname } = this.state;
         const { handleSubmit } = this.props;
         return (
             <form onSubmit={handleSubmit} id="loginform">

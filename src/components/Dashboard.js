@@ -6,10 +6,11 @@ import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels, received } = this.props;//eslint-disable-line
+        const { workspace, joined, users, channels, received, dispatch, send } = this.props;//eslint-disable-line
         let c = channels.map((channel, index) => <li key={index}>{channel}</li>);
         let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
+        let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -38,8 +39,6 @@ class Dashboard extends PureComponent {
                     <div id="messagelist">Messages: <hr />
                         Possible commands:
                         <ul id="commands">
-                            <li>{"{"}"command": "echo", "payload": "this will be sent back" }</li>
-                            <li>{"{"}"command": "name", "name": "Adri" }</li>
                             <li>{"{"}"command": "users" }</li>
                             <li>{"{"}"command": "join", "channel": "#test" }</li>
                             <li>{"{"}"command": "channels" }</li>
@@ -47,12 +46,16 @@ class Dashboard extends PureComponent {
                             <li>{"{"}"command": "message", "channel": "#test", "message": "hello world!" }</li>
                             <li>{"{"}"command": "part", "channel": "#test" }</li>
                         </ul>
-                        <button>Connect to back-end chat-box</button>
+                        <button onClick=
+                            {() => dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload })}
+                        >
+                            Connect to back-end chat-box as Adri
+                        </button>
                         {/* <Chatbox /> */}
                         <WebSocket />
                     </div>
                 </div>
-            </div>
+            </div >
         );
     }
 }
