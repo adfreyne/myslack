@@ -11,6 +11,7 @@ class Dashboard extends PureComponent {
         let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
         let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
+        let newMessage = "{ \"command\": \"message\", \"user\": \"Adri\",\"message\":\"nieuw bericht\" \}";
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -50,6 +51,9 @@ class Dashboard extends PureComponent {
                             {() => dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload })}
                         >
                             Connect to back-end chat-box as Adri
+                        </button>
+                        <button onClick={() => dispatch({ type: 'WEBSOCKET_SEND', payload: newMessage })}>
+                            Send new message
                         </button>
                         {/* <Chatbox /> */}
                         <WebSocket />

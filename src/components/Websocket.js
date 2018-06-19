@@ -8,7 +8,7 @@ class WebSocket extends Component {
         this.state = { input: '' };
     }
 
-    enderExample = (message) => {
+    renderExample = (message) => {
         const handler = event => {
             this.props.dispatch({ type: send, payload: JSON.parse(message) });//eslint-disable-line
             this.setState({

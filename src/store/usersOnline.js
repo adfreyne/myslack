@@ -11,7 +11,6 @@ export const reducer = (state = initialState, action) => {
                 let cmd = action.payload.users + " are online.";
                 return { users: [...state.users, cmd] };
             }
-
         default:
             return state;
     }
