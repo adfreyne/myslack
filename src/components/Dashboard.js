@@ -6,9 +6,10 @@ import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels } = this.props;//eslint-disable-line
+        const { workspace, joined, users, channels, received } = this.props;//eslint-disable-line
         let c = channels.map((channel, index) => <li key={index}>{channel}</li>);
         let u = users.map((user, index) => <li key={index}>{user}</li>);
+        let m = received.map((mess, index) => <li key={index}>{mess}</li>);
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -31,6 +32,9 @@ class Dashboard extends PureComponent {
                             </ul>
                             ...etc.
                         </div>
+                        <div id="messageschatbox">Messages:
+                            <ul>{m}</ul>
+                        </div>
                     </div>
                     <div id="messagelist">Messages: <hr />
                         Possible commands:
@@ -40,6 +44,7 @@ class Dashboard extends PureComponent {
                             <li>{"{"}"command": "users" }</li>
                             <li>{"{"}"command": "join", "channel": "#test" }</li>
                             <li>{"{"}"command": "channels" }</li>
+                            <li>{"{"}"command": "message", "user": "Adri", "message": "hello world!" }</li>
                             <li>{"{"}"command": "message", "channel": "#test", "message": "hello world!" }</li>
                             <li>{"{"}"command": "part", "channel": "#test" }</li>
                         </ul>
@@ -55,6 +60,7 @@ const mapStateToProps = (state) => ({
     workspace: state.reducer.workspace,
     joined: state.reducer.joined,
     users: state.reducer.users,
-    channels: state.channel.channels
+    channels: state.channel.channels,
+    received: state.received.received
 });
 export default connect(mapStateToProps)(Dashboard);

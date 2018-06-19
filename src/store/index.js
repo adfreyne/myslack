@@ -6,6 +6,7 @@ import { reducer as formReducer } from 'redux-form';
 import { reducer as websocketReducer, middleware as websocketMiddleware } from './websocket';
 import { reducer as messagesReducer } from './messages';
 import { reducer as channelReducer } from './makeChannel';
+import { reducer as receivedReducer } from './receivedMessages';
 
 const initialState = {
     workspace: 'Intec Front-End',
@@ -22,7 +23,8 @@ const initialState = {
     users: ['Adri'],
     messages: [],
     connected: false,
-    loggedOn: false
+    loggedOn: false,
+    receivedMessages: []
 
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
@@ -54,7 +56,8 @@ const rootReducer = combineReducers({
     // chat: chat,
     channel: channelReducer,
     websocket: websocketReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    received: receivedReducer
 });
 
 const middleware = routerMiddleware(history);

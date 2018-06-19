@@ -1,5 +1,5 @@
 const initialState = {
-    channels: ['test'],
+    channels: [],
     channel: ''
 };
 export const makeChannel = (channel) => ({
