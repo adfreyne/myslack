@@ -5,8 +5,9 @@ import { send } from '../store/websocket';
 class WebSocket extends Component {
     constructor () {
         super();
-        this.state = { input: '', user: '', channel: '', input2: '', newChannel: '' };
+        this.state = { input: '', user: '', channel: '', input2: '' };
     }
+
     renderMessage (message, idx) {
         return (
             <li key={idx}>
@@ -16,7 +17,7 @@ class WebSocket extends Component {
     }
     render () {
         const {
-            input, user, channel, input2, newChannel
+            input, user, channel, input2
         } = this.state;
 
         const {
@@ -27,18 +28,6 @@ class WebSocket extends Component {
 
         return (
             <div>
-                <div>
-                    Make new channel:
-                    <textarea
-                        rows="1" cols="10"
-                        value={newChannel}
-                        onChange={(e) => this.setState({ newChannel: e.target.value })}
-                    />
-                    <button onClick={() => {
-                        let newC = "{\"command\": \"join\", \"channel\":\"" + newChannel + "\"\}";
-                        dispatch({ type: send, payload: newC });
-                    }}>Make</button>
-                </div>
                 <div>
                     Send message to user:
                     <textarea

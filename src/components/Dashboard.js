@@ -41,20 +41,18 @@ class Dashboard extends PureComponent {
                         Possible commands:
                         <ul id="commands">
                             <li>{"{"}"command": "users" }</li>
-                            <li>{"{"}"command": "join", "channel": "#test" }</li>
                             <li>{"{"}"command": "channels" }</li>
-                            <li>{"{"}"command": "part", "channel": "#test" }</li>
                         </ul>
                         <button onClick=
                             {() => dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload })}
                         >
                             Connect to back-end chat-box as Adri
                         </button>
-                        <button onClick=
+                        {/* <button onClick=
                             {() => dispatch({ type: 'WEBSOCKET_SEND', payload: joinChannel })}
                         >
                             Make and join channel #general
-                        </button>
+                        </button> */}
 
                         <WebSocket />
                     </div>
