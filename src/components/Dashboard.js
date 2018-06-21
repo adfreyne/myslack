@@ -67,7 +67,7 @@ const mapStateToProps = (state) => ({
     workspace: state.reducer.workspace,
     joined: state.reducer.joined,
     users: state.users.users,
-    channels: state.channel.channels,
+    channels: state.channels.channels,
     received: state.received.received
 });
 export default connect(mapStateToProps)(Dashboard);

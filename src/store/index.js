@@ -5,9 +5,9 @@ import { createBrowserHistory, routerReducer, routerMiddleware, startListener } 
 import { reducer as formReducer } from 'redux-form';
 import { reducer as websocketReducer, middleware as websocketMiddleware } from './websocket';
 import { reducer as messagesReducer } from './messages';
-import { reducer as channelReducer } from './makeChannel';
+import { reducer as channelReducer } from './channels';
 import { reducer as receivedReducer } from './receivedMessages';
-import { reducer as usersReducer } from './usersOnline';
+import { reducer as usersOnlineReducer } from './usersOnline';
 
 
 const initialState = {
@@ -43,7 +43,8 @@ const profile = (state = initialState, action) => {
             residence: residence,
             age: age,
             interests: interests,
-            users: [...state.users, firstname]
+            users: []
+
         };
     }
     return state;
@@ -55,12 +56,11 @@ const rootReducer = combineReducers({
     reducer: profile,
     router: routerReducer,
     form: formReducer,
-    // chat: chat,
-    channel: channelReducer,
+    channels: channelReducer,
     websocket: websocketReducer,
     messages: messagesReducer,
     received: receivedReducer,
-    users: usersReducer
+    users: usersOnlineReducer
 });
 
 const middleware = routerMiddleware(history);

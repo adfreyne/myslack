@@ -43,12 +43,9 @@ const onSubmit = ({ channel }, dispatch) => {
     dispatch(reset('channel'));
 };
 const mapStateToProps = (state) => ({
-    channel: state.channel.channel,
-    channels: state.channel.channels
+    channels: state.channels.channels
 });
-NewChannelForm.propTypes = {
-    channel: PropTypes.string
-};
+
 NewChannelForm = connect(mapStateToProps)(NewChannelForm);
 NewChannelForm = reduxForm({
     form: 'channel',
