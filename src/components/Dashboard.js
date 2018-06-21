@@ -11,7 +11,7 @@ class Dashboard extends PureComponent {
         let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
         let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
-        let newMessage = "{ \"command\": \"message\", \"user\": \"Adri\",\"message\":\"nieuw bericht\" \}";
+        let joinChannel = "{ \"command\": \"join\", \"channel\": \"#general\" \}";
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -20,7 +20,7 @@ class Dashboard extends PureComponent {
                         <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
                         <hr />
                         <div>Channels:
-                            <NewChannelButton />
+                            {/* <NewChannelButton /> */}
                             <ul>
                                 {c}
                             </ul>
@@ -43,8 +43,6 @@ class Dashboard extends PureComponent {
                             <li>{"{"}"command": "users" }</li>
                             <li>{"{"}"command": "join", "channel": "#test" }</li>
                             <li>{"{"}"command": "channels" }</li>
-                            <li>{"{"}"command": "message", "user": "Adri", "message": "hello world!" }</li>
-                            <li>{"{"}"command": "message", "channel": "#test", "message": "hello world!" }</li>
                             <li>{"{"}"command": "part", "channel": "#test" }</li>
                         </ul>
                         <button onClick=
@@ -52,10 +50,12 @@ class Dashboard extends PureComponent {
                         >
                             Connect to back-end chat-box as Adri
                         </button>
-                        <button onClick={() => dispatch({ type: 'WEBSOCKET_SEND', payload: newMessage })}>
-                            Send new message
+                        <button onClick=
+                            {() => dispatch({ type: 'WEBSOCKET_SEND', payload: joinChannel })}
+                        >
+                            Make and join channel #general
                         </button>
-                        {/* <Chatbox /> */}
+
                         <WebSocket />
                     </div>
                 </div>

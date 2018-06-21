@@ -5,27 +5,7 @@ import { send } from '../store/websocket';
 class WebSocket extends Component {
     constructor () {
         super();
-        this.state = { input: '' };
-    }
-
-    renderExample = (message) => {
-        const handler = event => {
-            this.props.dispatch({ type: send, payload: JSON.parse(message) });//eslint-disable-line
-            this.setState({
-                input: message
-            });
-        };
-
-        return (
-            <li>
-                <code>{message}</code>
-                <button className="try"
-                    disabled={this.props.disconnected}//eslint-disable-line
-                    onClick={handler}>
-                    try
-                </button>
-            </li>
-        );
+        this.state = { input: '', user: '', channel: '', input2: '' };
     }
 
     renderMessage (message, idx) {
@@ -37,7 +17,7 @@ class WebSocket extends Component {
     }
     render () {
         const {
-            input
+            input, user, channel, input2
         } = this.state;
 
         const {
@@ -49,14 +29,38 @@ class WebSocket extends Component {
         return (
             <div>
                 <div>
-                    Send message:
+                    Send message to user:
                     <textarea
-                        className="input" rows="4" cols="40"
-                        id="chatInput"
+                        rows="1" cols="10"
+                        value={user}
+                        onChange={(e) => this.setState({ user: e.target.value })}
+                    />
+                    <textarea
+                        rows="1" cols="40"
                         value={input}
                         onChange={(e) => this.setState({ input: e.target.value })} />
                     <button onClick={() => {
-                        dispatch({ type: send, payload: input });
+                        let newMessage = "{\"command\": \"message\", \"user\":\"" + user + "\", \"message\":\"" + input + "\"\}";
+                        dispatch({ type: send, payload: newMessage });
+                    }}
+                    disabled={disconnected}>
+                        send
+                    </button>
+                </div>
+                <div>
+                    Send message to channel:
+                    <textarea
+                        rows="1" cols="15"
+                        value={channel}
+                        onChange={(e) => this.setState({ channel: e.target.value })}
+                    />
+                    <textarea
+                        rows="1" cols="40"
+                        value={input2}
+                        onChange={(e) => this.setState({ input2: e.target.value })} />
+                    <button onClick={() => {
+                        let newMessage = "{\"command\": \"message\", \"channel\":\"" + channel + "\", \"message\":\"" + input2 + "\"\}";
+                        dispatch({ type: send, payload: newMessage });
                     }}
                     disabled={disconnected}>
                         send

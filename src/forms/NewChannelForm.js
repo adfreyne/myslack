@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { makeChannel } from '../store/makeChannel';
 
 
