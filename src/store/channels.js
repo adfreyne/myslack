@@ -1,7 +1,7 @@
 import { message/*, send, open, close*/ } from './websocket';
 
 const initialState = {
-    channels: ["test"]
+    channels: ["#general"]
 };
 
 export const reducer = (state = initialState, action) => {

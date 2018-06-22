@@ -1,18 +1,22 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-//import Link from '../navigation/Link';
+import Link from '../navigation/Link';
 import WebSocket from './Websocket';
-//import { push } from 'redux-first-routing';
+import { push } from 'redux-first-routing';
 //import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels, received, dispatch, push, send } = this.props;//eslint-disable-line
-
+        const { workspace, joined, users, channels, received, dispatch, send } = this.props;//eslint-disable-line
+        let channelLink = channels.map((channel, index) => (
+            <Link to={channel} key={index} />
+        ));
         let c = channels.map((channel, index) => (
             <li key={index}>
-                <button>
-                    {channel}
+                <button onClick={() => {
+                    dispatch(push("/channels"));
+                }}
+                >{channel}
                 </button>
             </li >
         ));
