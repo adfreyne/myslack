@@ -36,14 +36,14 @@ export const update = (firstname, lastname, residence, age, interests) => ({
 
 const profile = (state = initialState, action) => {
     if (action.type === 'UPDATE') {
-        const { firstname, lastname, residence, age, interests } = action.payload;
+        const { firstname, lastname, residence, age, interests, users } = action.payload;
         return {
             firstname: firstname,
             lastname: lastname,
             residence: residence,
             age: age,
             interests: interests,
-            users: []
+            users: users
 
         };
     }

@@ -11,7 +11,7 @@ class Dashboard extends PureComponent {
 
         let c = channels.map((channel, index) => (
             <li key={index}>
-                <button onClick={(push) => dispatch(push("/" + channel))}>
+                <button>
                     {channel}
                 </button>
             </li >
