@@ -1,16 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-// import Chatbox from './Chatbox';
+import Link from '../navigation/Link';
 import WebSocket from './Websocket';
-import NewChannelButton from '../navigation/NewChannelButton';
+import { push } from 'redux-first-routing';
+//import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels, received, dispatch, send } = this.props;//eslint-disable-line
-        let c = channels.map((channel, index) => <li key={index}>{channel}</li>);
+        const { workspace, joined, users, channels, received, dispatch, push, send } = this.props;//eslint-disable-line
+
+        let c = channels.map((channel, index) => (
+            <li key={index}>
+                <button onClick={(push) => dispatch(push("/" + channel))}>
+                    {channel}
+                </button>
+            </li >
+        ));
         let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
-        let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
+        // let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
         let joinChannel = "{ \"command\": \"join\", \"channel\": \"#general\" \}";
         return (
             <div>
@@ -43,15 +51,10 @@ class Dashboard extends PureComponent {
                             <li>{"{"}"command": "users" }</li>
                             <li>{"{"}"command": "channels" }</li>
                         </ul>
-                        <button onClick=
+                        {/* <button onClick=
                             {() => dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload })}
                         >
                             Connect to back-end chat-box as Adri
-                        </button>
-                        {/* <button onClick=
-                            {() => dispatch({ type: 'WEBSOCKET_SEND', payload: joinChannel })}
-                        >
-                            Make and join channel #general
                         </button> */}
 
                         <WebSocket />

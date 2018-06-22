@@ -1,49 +1,54 @@
 import React, { PureComponent } from 'react';
-import { Field, reduxForm } from 'redux-form';
+//import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { update } from '../store';
+//import { update } from '../store';
+import { push } from 'redux-first-routing';
 
-class LoginForm extends PureComponent {
+class Login extends PureComponent {
     constructor () {
         super();
         this.state = { firstname: '' };
     }
     render () {
-        const { handleSubmit } = this.props;
+        const { dispatch } = this.props;
+        let sendPayload = "{ \"command\": \"name\", \"name\": \"Adriaan\" }";
         return (
-            <form onSubmit={handleSubmit} id="loginform">
-                <div>
-                    <label>Firstname</label>
+            <div >
+                <button id="loginButton" onClick=
+                    {() => {
+                        dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload });
+                        dispatch(push("/dashboard"));
+                        // if (connected && firstname === 'Adri') { this.disabled = true; }
+                    }}
+                >
+                    Connect to back-end chat-box as Adriaan
+                </button>
+                {/* <form onSubmit={handleSubmit} id="loginform">
                     <div>
-                        <Field name="firstname" component="input" type="text" size="10" value="" />
+                        <label>Firstname</label>
+                        <div>
+                            <Field name="firstname" component="input" type="text" size="10" value="" />
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label>Password</label>
                     <div>
-                        <Field name="password" component="input" type="password" size="10" value="" />
+                        <button type="submit" disabled="true" >
+                            Login
+                        </button>
                     </div>
-                </div>
-                <div>
-                    <button type="submit" disabled="true" >
-                        Login
-                    </button>
-                </div>
-                <div id="forgot">Forgot firstname/password</div>
-            </form>
+                    <div id="forgot">Forgot firstname/password</div>
+                </form>
+            </div>
         );
     }
 }
-const onSubmit = ({ firstname, password }, dispatch) => {
+const onSubmit = ({ firstname }, dispatch) => {
     dispatch(
-        update(firstname, password));
+        update(firstname));
 };
 const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname,
-    password: state.reducer.password
-});
-LoginForm = connect(mapStateToProps)(LoginForm);
-export default reduxForm({
-    form: 'login',
-    onSubmit
-})(LoginForm);
+    firstname: state.reducer.firstname
+}); */}</div>
+        );
+    }
+}
+export default connect()(Login);
