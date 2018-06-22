@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Link from '../navigation/Link';
+//import Link from '../navigation/Link';
 import WebSocket from './Websocket';
-import { push } from 'redux-first-routing';
+//import { push } from 'redux-first-routing';
 //import NewChannelButton from '../navigation/NewChannelButton';
 
 class Dashboard extends PureComponent {
@@ -19,7 +19,7 @@ class Dashboard extends PureComponent {
         let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
         // let sendPayload = "{ \"command\": \"name\", \"name\": \"Adri\" \}";
-        let joinChannel = "{ \"command\": \"join\", \"channel\": \"#general\" \}";
+        //let joinChannel = "{ \"command\": \"join\", \"channel\": \"#general\" \}";
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>

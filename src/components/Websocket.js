@@ -35,7 +35,7 @@ class WebSocket extends Component {
                         onChange={(e) => this.setState({ newChannel: e.target.value })}
                     />
                     <button onClick={() => {
-                        let newC = "{\"command\": \"join\", \"channel\":\"" + newChannel + "\"\}";
+                        let newC = "{\"command\": \"join\", \"channel\":\"" + newChannel + "\"}";
                         dispatch({ type: send, payload: newC });
                     }}>Make</button>
                 </div>
@@ -52,7 +52,7 @@ class WebSocket extends Component {
                         onChange={(e) => this.setState({ input: e.target.value })} />
                     <button onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"user\":\"" +
-                            user + "\", \"message\":\"" + input + "\"\}";
+                            user + "\", \"message\":\"" + input + "\"}";
                         dispatch({ type: send, payload: newMessage });
                     }}
                     disabled={disconnected}>
@@ -72,7 +72,7 @@ class WebSocket extends Component {
                         onChange={(e) => this.setState({ input2: e.target.value })} />
                     <button onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"channel\":\"" +
-                            channel + "\", \"message\":\"" + input2 + "\"\}";
+                            channel + "\", \"message\":\"" + input2 + "\"}";
                         dispatch({ type: send, payload: newMessage });
                     }}
                     disabled={disconnected}>
