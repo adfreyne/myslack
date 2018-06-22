@@ -1,7 +1,7 @@
 import { message/*, send, open, close*/ } from './websocket';
 
 const initialState = {
-    channels: ["#general"]
+    channels: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -10,7 +10,9 @@ export const reducer = (state = initialState, action) => {
             if (action.payload.channel) {
                 let cmd = action.payload.channel;
                 if (state.channels.indexOf(action.payload.channel) === -1) {
-                    return { channels: [...state.channels, cmd] };
+                    return {
+                        channels: [...state.channels, cmd]
+                    };
                 } else {
                     return state;
                 }

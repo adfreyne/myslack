@@ -55,7 +55,7 @@ const history = createBrowserHistory();
 const rootReducer = combineReducers({
     reducer: profile,
     router: routerReducer,
-    form: formReducer,
+    //form: formReducer,
     channels: channelReducer,
     websocket: websocketReducer,
     messages: messagesReducer,

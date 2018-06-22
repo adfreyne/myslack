@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
 
-class WebSocket extends Component {
+class ChannelPage extends Component {
     constructor () {
         super();
         this.state = { input: '', user: '', channel: '', input2: '' };
@@ -10,19 +10,19 @@ class WebSocket extends Component {
 
     render () {
         const {
-            input, user, channel, input2
+            channel, input2
         } = this.state;
 
         const {
-      dispatch,//eslint-disable-line
-      disconnected,//eslint-disable-line
-      messages//eslint-disable-line
+            dispatch,//eslint-disable-line
+            disconnected,//eslint-disable-line
+            messages//eslint-disable-line
         } = this.props;
 
         return (
-            <div>
+            <div id="channelpage">
                 <div>
-          Send message to channel:
+                    Send message to channel:
                     <textarea
                         rows="1" cols="15"
                         value={channel}
@@ -34,11 +34,11 @@ class WebSocket extends Component {
                         onChange={(f) => this.setState({ input2: f.target.value })} />
                     <button onClick={() => {
                         let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
-              channel + "\", \"message\":\"" + input2 + "\"\}";
+                            channel + "\", \"message\":\"" + input2 + "\"\}";
                         dispatch({ type: send, payload: newMessage2 });
                     }}
                     disabled={disconnected}>
-            send
+                        send
                     </button>
                 </div>
             </div>
@@ -48,7 +48,12 @@ class WebSocket extends Component {
 
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
-    disconnected: !state.websocket.connected
+    disconnected: !state.websocket.connected,
+    workspace: state.reducer.workspace,
+    joined: state.reducer.joined,
+    users: state.users.users,
+    channels: state.channels.channels,
+    received: state.received.received
 });
 
-export default connect(mapStateToProps)(WebSocket);
+export default connect(mapStateToProps)(ChannelPage);

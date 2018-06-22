@@ -5,14 +5,12 @@ import Navigation from './navigation/Navigation';
 import LoginForm from './forms/LoginForm';
 import Dashboard from './components/Dashboard';
 import UserProfileForm from './forms/UserProfileForm';
-import NewChannelForm from './forms/NewChannelForm';
 import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './components/ChannelPage';
 
 const Login = () => <div><LoginForm /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
 const UserProfile = () => <div><UserProfileForm /></div>;
-const NewChannel = () => <div><NewChannelForm /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
 
@@ -20,7 +18,6 @@ const routingTable = {
     '/': <Login />,
     '/dashboard': <DashBoard />,
     '/userprofile': <UserProfile />,
-    '/newchannel': <NewChannel />,
     '/channels': <Channels />
 };
 
