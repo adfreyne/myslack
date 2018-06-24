@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { update } from '../store';
+import { update } from '../store/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 class LoggedInMessage extends PureComponent {
-    render() {
+    render () {
         const { firstname, connected } = this.props;
         let date = new Date();
         let d = date.toDateString();
@@ -12,7 +12,7 @@ class LoggedInMessage extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname,
+    firstname: state.profile.firstname,
     connected: state.websocket.connected
 });
 export default connect(mapStateToProps)(LoggedInMessage);

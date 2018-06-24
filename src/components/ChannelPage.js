@@ -5,7 +5,7 @@ import { send } from '../store/websocket';
 class ChannelPage extends Component {
     constructor () {
         super();
-        this.state = { input: '', user: '', channel: '', input2: '' };
+        this.state = { channel: '', input2: '' };
     }
 
     render () {
@@ -16,8 +16,9 @@ class ChannelPage extends Component {
         const {
             dispatch,//eslint-disable-line
             disconnected,//eslint-disable-line
-            messages//eslint-disable-line
+            received//eslint-disable-line
         } = this.props;
+        let m = received.map((mess, index) => <li key={index}>{mess}</li>);
 
         return (
             <div id="channelpage">
@@ -34,12 +35,17 @@ class ChannelPage extends Component {
                         onChange={(f) => this.setState({ input2: f.target.value })} />
                     <button onClick={() => {
                         let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
-                            channel + "\", \"message\":\"" + input2 + "\"\}";
+                            channel + "\", \"message\":\"" + input2 + "\"}";
                         dispatch({ type: send, payload: newMessage2 });
                     }}
                     disabled={disconnected}>
                         send
                     </button>
+                    <hr />
+                    <div id="messageschatbox">Messages:
+                        <ul>{m}</ul>
+                    </div>
+                    <hr />
                 </div>
             </div>
         );
@@ -49,8 +55,8 @@ class ChannelPage extends Component {
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
     disconnected: !state.websocket.connected,
-    workspace: state.reducer.workspace,
-    joined: state.reducer.joined,
+    workspace: state.profile.workspace,
+    joined: state.profile.joined,
     users: state.users.users,
     channels: state.channels.channels,
     received: state.received.received

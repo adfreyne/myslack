@@ -2,58 +2,17 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory, routerReducer, routerMiddleware, startListener } from 'redux-first-routing';
-import { reducer as formReducer } from 'redux-form';
 import { reducer as websocketReducer, middleware as websocketMiddleware } from './websocket';
 import { reducer as messagesReducer } from './messages';
 import { reducer as channelReducer } from './channels';
 import { reducer as receivedReducer } from './receivedMessages';
 import { reducer as usersOnlineReducer } from './usersOnline';
-
-
-const initialState = {
-    workspace: 'Intec Front-End',
-    firstname: 'Adri',
-    password: 'password',
-    joined: 'June 11 2018',
-    lastname: 'De Freyne',
-    residence: 'Roosdaal',
-    age: '40',
-    interests: ['coding', 'reading'],
-    channels: [],
-    subscribedChannels: [],
-    activeChannel: '',
-    users: [],
-    messages: [],
-    connected: false,
-    loggedOn: false,
-    receivedMessages: []
-
-};
-export const update = (firstname, lastname, residence, age, interests) => ({
-    type: 'UPDATE',
-    payload: { firstname, lastname, residence, age, interests }
-});
-
-const profile = (state = initialState, action) => {
-    if (action.type === 'UPDATE') {
-        const { firstname, lastname, residence, age, interests, users } = action.payload;
-        return {
-            firstname: firstname,
-            lastname: lastname,
-            residence: residence,
-            age: age,
-            interests: interests,
-            users: users
-
-        };
-    }
-    return state;
-};
+import { reducer as profileReducer } from './profile';
 
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-    reducer: profile,
+    profile: profileReducer,
     router: routerReducer,
     //form: formReducer,
     channels: channelReducer,
