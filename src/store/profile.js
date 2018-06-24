@@ -8,15 +8,7 @@ const initialState = {
     residence: 'Roosdaal',
     age: '40',
     interests: ['coding', 'reading'],
-    channels: [],
-    subscribedChannels: [],
-    activeChannel: '',
-    users: [],
-    messages: [],
-    connected: false,
-    loggedOn: false,
-    receivedMessages: []
-
+    subscribedChannels: []
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',
@@ -25,15 +17,13 @@ export const update = (firstname, lastname, residence, age, interests) => ({
 
 export const reducer = (state = initialState, action) => {
     if (action.type === 'UPDATE') {
-        const { firstname, lastname, residence, age, interests, users } = action.payload;
+        const { firstname, lastname, residence, age, interests } = action.payload;
         return {
             firstname: firstname,
             lastname: lastname,
             residence: residence,
             age: age,
-            interests: interests,
-            users: users
-
+            interests: interests
         };
     }
     return state;

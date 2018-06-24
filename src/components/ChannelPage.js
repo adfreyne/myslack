@@ -42,7 +42,7 @@ class ChannelPage extends Component {
                         send
                     </button>
                     <hr />
-                    <div id="messageschatbox">Messages:
+                    <div id="messagesOnChannelPage">Messages:
                         <ul>{m}</ul>
                     </div>
                     <hr />

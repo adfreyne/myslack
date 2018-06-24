@@ -1,7 +1,9 @@
 import { message/*, send, open, close*/ } from './websocket';
 
 const initialState = {
-    received: []
+    received: [],
+    id: 0,
+    name: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -11,7 +13,9 @@ export const reducer = (state = initialState, action) => {
                 let cmd = action.payload.name + " is online.";
                 return {
                     ...state,
-                    received: [...state.received, cmd]
+                    received: [...state.received, cmd],
+                    id: action.payload.id,
+                    name: action.payload.name
                 };
             }
             if (action.payload.user && action.payload.message) {
@@ -22,7 +26,8 @@ export const reducer = (state = initialState, action) => {
                 };
             }
             if (action.payload.channel && action.payload.message) {
-                let cmd = "Message on channel " + action.payload.channel + " : " + action.payload.message;
+                let cmd = "Message on channel " + action.payload.channel + " : " +
+                    action.payload.message + " from " + action.payload.id;
                 return {
                     ...state,
                     received: [...state.received, cmd]
