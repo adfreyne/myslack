@@ -11,43 +11,31 @@ class Login extends PureComponent {
     }
     render () {
         const { dispatch } = this.props;
-        let sendPayload = "{ \"command\": \"name\", \"name\": \"Adriaan\" }";
+        let sendPayload = "{ \"command\":\"name\",\"name\":\"Adriaan\" }";
+        let sendPayloadBis = "{ \"command\":\"name\",\"name\":\"" + this.state.firstname + "\" }";
         return (
             <div >
-                <button id="loginButton" onClick=
+                <button onClick=
                     {() => {
                         dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload });
                         dispatch(push("/dashboard"));
-                        // if (connected && firstname === 'Adri') { this.disabled = true; }
                     }}
                 >
                     Connect to back-end chat-box as Adriaan
                 </button>
-                {/* <form onSubmit={handleSubmit} id="loginform">
-                    <div>
-                        <label>Firstname</label>
-                        <div>
-                            <Field name="firstname" component="input" type="text" size="10" value="" />
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" disabled="true" >
-                            Login
-                        </button>
-                    </div>
-                    <div id="forgot">Forgot firstname/password</div>
-                </form>
+                <div>Log in as someone else. Name:
+                    <textarea
+                        value={this.state.firstname}
+                        onChange={(f) => this.setState({ firstname: f.target.value })} />
+                    <button
+                        onClick={
+                            () => {
+                                dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayloadBis });
+                                dispatch(push("/dashboard"));
+                            }}
+                    >Log in</button>
+                </div>
             </div>
-        );
-    }
-}
-const onSubmit = ({ firstname }, dispatch) => {
-    dispatch(
-        update(firstname));
-};
-const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname
-}); */}</div>
         );
     }
 }

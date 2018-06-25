@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 class LoggedInMessage extends PureComponent {
     render () {
-        const { firstname, connected } = this.props;
+        const { connected } = this.props;
         let date = new Date();
         let d = date.toDateString();
         if (connected) {
-            return <p id="loggedInAs">{d} - Connected to chat-backend-server - Logged in as: {firstname}</p>;
+            return <p id="loggedInAs">{d} - Connected to chat-backend-server </p>;
         } else return <p>Not connected to chat-backend-server</p>;
     }
 }
