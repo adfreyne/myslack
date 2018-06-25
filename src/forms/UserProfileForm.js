@@ -69,12 +69,12 @@ const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) 
         update(firstname, lastname, residence, age, interests));
 };
 const mapStateToProps = (state) => ({
-    initialValues: state.profile,
-    firstname: state.form.firstname,
-    lastname: state.form.lastname,
-    residence: state.form.residence,
-    age: state.form.age,
-    interests: state.form.interests
+    initialValues: state.reducer,
+    firstname: state.reducer.firstname,
+    lastname: state.reducer.lastname,
+    residence: state.reducer.residence,
+    age: state.reducer.age,
+    interests: state.reducer.interests
 });
 UserProfileForm.propTypes = {
     firstname: PropTypes.string,
