@@ -26,7 +26,6 @@ class Dashboard extends PureComponent {
                         <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
                         <hr />
                         <div>Channels:
-                            {/* <NewChannelButton /> */}
                             <ul>
                                 {c}
                             </ul>
@@ -61,6 +60,7 @@ const mapStateToProps = (state) => ({
     joined: state.profile.joined,
     users: state.users.users,
     channels: state.channels.channels,
+    activeChannel: state.channels.activeChannel,
     received: state.received.received
 });
 export default connect(mapStateToProps)(Dashboard);
