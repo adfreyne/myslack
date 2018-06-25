@@ -12,7 +12,6 @@ class LoggedInMessage extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname,
     connected: state.websocket.connected
 });
 export default connect(mapStateToProps)(LoggedInMessage);

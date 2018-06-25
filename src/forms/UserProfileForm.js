@@ -8,7 +8,6 @@ class UserProfileForm extends PureComponent {
     render () {
         const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;
         let i = interests.toString();
-        console.log(firstname);
         return (
             <div id="userprofile">
                 <div>

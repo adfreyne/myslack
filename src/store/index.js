@@ -9,35 +9,9 @@ import { reducer as receivedReducer } from './receivedMessages';
 import { reducer as usersOnlineReducer } from './usersOnline';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
+import { profile as profile } from './profile';
 
-const initialState = {
-    workspace: 'Intec Front-End',
-    firstname: 'Adriaan',
-    joined: 'June 11 2018',
-    lastname: 'De Freyne',
-    residence: 'Roosdaal',
-    age: '41',
-    interests: ['coding', 'reading', 'film'],
-    users: []
-};
-export const update = (firstname, lastname, residence, age, interests) => ({
-    type: 'UPDATE',
-    payload: { firstname, lastname, residence, age, interests }
-});
 
-const profile = (state = initialState, action) => {
-    if (action.type === 'UPDATE') {
-        const { firstname, lastname, residence, age, interests } = action.payload;
-        return {
-            firstname: firstname,
-            lastname: lastname,
-            residence: residence,
-            age: age,
-            interests: interests
-        };
-    }
-    return state;
-};
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 //import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-//import { update } from '../store';
 import { push } from 'redux-first-routing';
 
 class Login extends PureComponent {
