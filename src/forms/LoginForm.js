@@ -25,6 +25,7 @@ class Login extends PureComponent {
                 </button>
                 <div>Log in as someone else. Name:
                     <textarea
+                        rows="1" cols="12"
                         value={this.state.firstname}
                         onChange={(f) => this.setState({ firstname: f.target.value })} />
                     <button
