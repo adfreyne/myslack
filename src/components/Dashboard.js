@@ -37,17 +37,12 @@ class Dashboard extends PureComponent {
                             </ul>
                         </div>
                         <hr />
-                        <div id="messageschatbox">Messages:
+                        <div>
                             <ul>{m}</ul>
                         </div>
                         <hr />
                     </div>
-                    <div id="messagelist">Messages: <hr />
-                        Possible commands:
-                        <ul id="commands">
-                            <li>{"{"}"command": "users" }</li>
-                            <li>{"{"}"command": "channels" }</li>
-                        </ul>
+                    <div id="messagelist">
                         <WebSocket />
                     </div>
                 </div>

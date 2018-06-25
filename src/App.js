@@ -42,7 +42,7 @@ class App extends Component {
 }
 const mapStateToProps = (state) => ({
     location: state.router.pathname,
-    firstname: state.profile.firstname,
+    firstname: state.form.firstname,
     connected: state.messages.connected
 
 });

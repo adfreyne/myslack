@@ -1,24 +1,25 @@
 
 const initialState = {
-    workspace: 'Intec Front-End',
     firstname: 'Adri',
-    password: 'password',
-    joined: 'June 11 2018',
     lastname: 'De Freyne',
     residence: 'Roosdaal',
     age: '40',
-    interests: ['coding', 'reading'],
-    subscribedChannels: []
+    interests: ['flying'],
+    channels: [],
+    subscribedChannels: [],
+    activeChannel: '',
+    users: []
+
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',
     payload: { firstname, lastname, residence, age, interests }
 });
-
-export const reducer = (state = initialState, action) => {
+export const profile = (state = initialState, action) => {
     if (action.type === 'UPDATE') {
         const { firstname, lastname, residence, age, interests } = action.payload;
         return {
+            ...state,
             firstname: firstname,
             lastname: lastname,
             residence: residence,

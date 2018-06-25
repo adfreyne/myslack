@@ -12,7 +12,7 @@ class LoggedInMessage extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    firstname: state.profile.firstname,
+    firstname: state.form.firstname,
     connected: state.websocket.connected
 });
 export default connect(mapStateToProps)(LoggedInMessage);

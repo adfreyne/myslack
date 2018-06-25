@@ -7,13 +7,13 @@ import { reducer as messagesReducer } from './messages';
 import { reducer as channelReducer } from './channels';
 import { reducer as receivedReducer } from './receivedMessages';
 import { reducer as usersOnlineReducer } from './usersOnline';
-import { reducer as profileReducer } from './profile';
+import { profile as profileReducer } from './profile';
 import thunk from 'redux-thunk';
 
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-    profile: profileReducer,
+    form: profileReducer,
     router: routerReducer,
     channels: channelReducer,
     websocket: websocketReducer,

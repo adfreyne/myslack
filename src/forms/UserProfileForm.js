@@ -4,11 +4,11 @@ import { update } from '../store/profile';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-
 class UserProfileForm extends PureComponent {
     render () {
-        const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;//eslint-disable-line
+        const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;
         let i = interests.toString();
+        console.log(firstname);
         return (
             <div id="userprofile">
                 <div>
@@ -27,31 +27,31 @@ class UserProfileForm extends PureComponent {
                     <div>
                         <label>First Name: </label>
                         <div>
-                            <Field className="input" name="firstname" component="input" type="text" />
+                            <Field name="firstname" component="input" type="text" />
                         </div>
                     </div>
                     <div>
                         <label>Last Name</label>
                         <div>
-                            <Field className="input" name="lastname" component="input" type="text" />
+                            <Field name="lastname" component="input" type="text" />
                         </div>
                     </div>
                     <div>
                         <label>Residence</label>
                         <div>
-                            <Field className="input" name="residence" component="input" type="text" />
+                            <Field name="residence" component="input" type="text" />
                         </div>
                     </div>
                     <div>
                         <label>Age</label>
                         <div>
-                            <Field className="input" name="age" component="input" type="number" />
+                            <Field name="age" component="input" type="number" />
                         </div>
                     </div>
                     <div>
                         <label>Interests</label>
                         <div>
-                            <Field className="input" name="interests" component="input" type="text" />
+                            <Field name="interests" component="input" type="text" />
                         </div>
                     </div>
                     <div>
@@ -64,18 +64,17 @@ class UserProfileForm extends PureComponent {
         );
     }
 }
-const onSubmit = ({ firstname, lastname, residence, age, interests, users }, dispatch) => {
+const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) => {
     dispatch(
-        update(firstname, lastname, residence, age, interests, users));
+        update(firstname, lastname, residence, age, interests));
 };
 const mapStateToProps = (state) => ({
-    initialValues: state.reducer,
-    firstname: state.reducer.firstname,
-    lastname: state.reducer.lastname,
-    residence: state.reducer.residence,
-    age: state.reducer.age,
-    interests: state.reducer.interests,
-    users: state.reducer.users
+    initialValues: state.profile,
+    firstname: state.form.firstname,
+    lastname: state.form.lastname,
+    residence: state.form.residence,
+    age: state.form.age,
+    interests: state.form.interests
 });
 UserProfileForm.propTypes = {
     firstname: PropTypes.string,
@@ -91,3 +90,4 @@ UserProfileForm = reduxForm({
 UserProfileForm = connect(mapStateToProps)(UserProfileForm);
 
 export default UserProfileForm;
+

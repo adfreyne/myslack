@@ -39,6 +39,10 @@ class WebSocket extends Component {
                         dispatch({ type: send, payload: newC });
                     }}>Make</button>
                 </div>
+                <p />
+                Messages:
+                <hr />
+                <hr />
                 <div>
                     Send message to user:
                     <textarea
@@ -79,6 +83,8 @@ class WebSocket extends Component {
                         send
                     </button>
                 </div>
+                <hr />
+                <hr />
                 <div>Users online:
                     <button onClick={() => {
                         let theUsers = "{\"command\": \"users\"}";
