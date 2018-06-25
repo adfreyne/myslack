@@ -79,6 +79,18 @@ class WebSocket extends Component {
                         send
                     </button>
                 </div>
+                <div>Users online:
+                    <button onClick={() => {
+                        let theUsers = "{\"command\": \"users\"}";
+                        dispatch({ type: send, payload: theUsers });
+                    }}>Show</button>
+                </div>
+                <div>Channels:
+                    <button onClick={() => {
+                        let theChannels = "{\"command\": \"channels\"}";
+                        dispatch({ type: send, payload: theChannels });
+                    }}>Show</button>
+                </div>
                 <div>
                     <p>Websocket activity:</p>
                     <ul id="websocket-activity">
