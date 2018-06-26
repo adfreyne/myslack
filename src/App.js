@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+
 import { connect } from 'react-redux';
 import Navigation from './navigation/Navigation';
 import LoginForm from './forms/LoginForm';

@@ -9,56 +9,57 @@ class UserProfileForm extends PureComponent {
         const { handleSubmit, firstname, lastname, residence, age, interests } = this.props;
         let i = interests.toString();
         return (
-            <div id="userprofile">
-                <div>
+            <div className="pure-g" id="userprofile">
+                <div className="pure-u-1-4">
                     <img src="https://png.icons8.com/color/50/000000/magritte.png" alt="profile" width="200px" height="200px" />
                 </div>
-                <div><h3>About you:</h3>
+                <div className="pure-u-3-8" ><h3>About you:</h3>
                     <ul>
                         <li>{firstname} {lastname}, aged: {age}</li>
                         <li>You live in {residence}</li>
                         <li>Interests: {i}</li>
                     </ul>
                 </div>
-
-                <form onSubmit={handleSubmit}>
-                    <div><h3>Update your profile ?</h3></div>
-                    <div>
-                        <label>First Name: </label>
-                        <div>
-                            <Field name="firstname" component="input" type="text" />
+                <div className="pure-u-3-8" >
+                    <form className="pure-form" onSubmit={handleSubmit}>
+                        <div><h3>Update your profile ?</h3></div>
+                        <div className="pure-control-group">
+                            <label>First Name: </label>
+                            <div>
+                                <Field name="firstname" component="input" type="text" />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label>Last Name</label>
-                        <div>
-                            <Field name="lastname" component="input" type="text" />
+                        <div className="pure-control-group">
+                            <label>Last Name</label>
+                            <div>
+                                <Field name="lastname" component="input" type="text" />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label>Residence</label>
-                        <div>
-                            <Field name="residence" component="input" type="text" />
+                        <div className="pure-control-group">
+                            <label>Residence</label>
+                            <div>
+                                <Field name="residence" component="input" type="text" />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label>Age</label>
-                        <div>
-                            <Field name="age" component="input" type="number" />
+                        <div className="pure-control-group">
+                            <label>Age</label>
+                            <div>
+                                <Field name="age" component="input" type="number" />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <label>Interests</label>
-                        <div>
-                            <Field name="interests" component="input" type="text" />
+                        <div className="pure-control-group">
+                            <label>Interests</label>
+                            <div>
+                                <Field name="interests" component="input" type="text" />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <button type="submit" >
-                            Submit changes
-                        </button>
-                    </div>
-                </form>
+                        <div className="pure-control-group">
+                            <button className="pure-button pure-button-primary" type="submit" >
+                                Submit changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         );
     }

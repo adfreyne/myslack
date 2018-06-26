@@ -28,7 +28,7 @@ class Login extends PureComponent {
                     <div>State your loginname:
                         <Field name="firstname" component="input" type="text"
                             rows="1" cols="12" />
-                        <button type="submit" disabled={!connected}>Log in</button>
+                        <button className="pure-button pure-button-primary" type="submit" disabled={!connected}>Log in</button>
                     </div>
                 </form>
             </div>

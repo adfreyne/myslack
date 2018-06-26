@@ -35,7 +35,7 @@ class WebSocket extends Component {
                         value={newChannel}
                         onChange={(e) => this.setState({ newChannel: e.target.value })}
                     />
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let newC = "{\"command\": \"join\", \"channel\":\"" + newChannel + "\"}";
                         dispatch({ type: send, payload: newC });
                     }}>Make</button>
@@ -55,7 +55,7 @@ class WebSocket extends Component {
                         rows="1" cols="40"
                         value={messageToUser}
                         onChange={(e) => this.setState({ messageToUser: e.target.value })} />
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"user\":\"" +
                             user + "\", \"message\":\"" + messageToUser + "\"}";
                         dispatch({ type: send, payload: newMessage });
@@ -75,7 +75,7 @@ class WebSocket extends Component {
                         rows="1" cols="40"
                         value={messageToChannel}
                         onChange={(e) => this.setState({ messageToChannel: e.target.value })} />
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"channel\":\"" +
                             channel + "\", \"message\":\"" + messageToChannel + "\"}";
                         dispatch({ type: send, payload: newMessage });
@@ -87,13 +87,13 @@ class WebSocket extends Component {
                 <hr />
                 <hr />
                 <div>Users online:
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let theUsers = "{\"command\": \"users\"}";
                         dispatch({ type: send, payload: theUsers });
                     }}>Show</button>
                 </div>
                 <div>Channels:
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let theChannels = "{\"command\": \"channels\"}";
                         dispatch({ type: send, payload: theChannels });
                     }}>Show</button>

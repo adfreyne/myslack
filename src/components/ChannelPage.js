@@ -34,14 +34,14 @@ class ChannelPage extends Component {
                         rows="1" cols="40"
                         value={messageToChannel}
                         onChange={(f) => this.setState({ messageToChannel: f.target.value })} />
-                    <button onClick={() => {
+                    <button className="pure-button" onClick={() => {
                         let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
                             channel + "\", \"message\":\"" + messageToChannel + "\"}";
                         dispatch({ type: send, payload: newMessage2 });
                     }}
                     disabled={disconnected}>
                         send
-                    </button>
+                    </button >
                     <hr />
                     <div id="messagesOnChannelPage">Messages:
                         <ul>{m}</ul>

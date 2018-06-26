@@ -11,7 +11,7 @@ class Dashboard extends PureComponent {
 
         let c = channels.map((channel, index) => (
             <li key={index}>
-                <button onClick={() => {
+                <button className="pure-button" onClick={() => {
                     dispatch(push("/channels"));
                 }}
                 >{channel}
@@ -23,8 +23,8 @@ class Dashboard extends PureComponent {
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
-                <div id="messagesarea">
-                    <div id="sidebar">
+                <div className="pure-g" id="messagesarea">
+                    <div className="pure-u-1-4" id="sidebar">
                         <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
                         <hr />
                         <div>Channels:
@@ -44,7 +44,7 @@ class Dashboard extends PureComponent {
                         </div>
                         <hr />
                     </div>
-                    <div id="messagelist">
+                    <div className="pure-u-3-4" id="messagelist">
                         <WebSocket />
                     </div>
                 </div>

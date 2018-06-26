@@ -8,7 +8,7 @@ class Link extends Component {
         const { dispatch, to, children } = this.props;
 
         return (
-            <button id={to} onClick={(event) => {
+            <button className="pure-button" id={to} onClick={(event) => {
                 event.preventDefault();
                 dispatch(push(to));
             }}>
