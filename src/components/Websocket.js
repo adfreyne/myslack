@@ -27,10 +27,10 @@ class WebSocket extends Component {
         } = this.props;
 
         return (
-            <div>
+            <div className="pure-form">
                 <div>
                     Make new channel:
-                    <textarea
+                    <input
                         rows="1" cols="10"
                         value={newChannel}
                         onChange={(e) => this.setState({ newChannel: e.target.value })}
@@ -46,12 +46,12 @@ class WebSocket extends Component {
                 <hr />
                 <div>
                     Send message to user:
-                    <textarea
+                    <input
                         rows="1" cols="10"
                         value={user}
                         onChange={(e) => this.setState({ user: e.target.value })}
                     />
-                    <textarea
+                    <input
                         rows="1" cols="40"
                         value={messageToUser}
                         onChange={(e) => this.setState({ messageToUser: e.target.value })} />
@@ -66,12 +66,12 @@ class WebSocket extends Component {
                 </div>
                 <div>
                     Send message to channel:
-                    <textarea
+                    <input
                         rows="1" cols="15"
                         value={channel}
                         onChange={(e) => this.setState({ channel: e.target.value })}
                     />
-                    <textarea
+                    <input
                         rows="1" cols="40"
                         value={messageToChannel}
                         onChange={(e) => this.setState({ messageToChannel: e.target.value })} />

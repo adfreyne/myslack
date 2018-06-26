@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
+
 
 class ChannelPage extends Component {
     constructor () {
@@ -15,43 +17,45 @@ class ChannelPage extends Component {
         } = this.state;
 
         const {
-            dispatch,
             disconnected,
-            received
+            received,
+            handleSubmit
         } = this.props;
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
 
         return (
             <div id="channelpage">
-                <div>
+                <form className="pure-form" onSubmit={handleSubmit}>
                     Send message to channel:
-                    <textarea
-                        rows="1" cols="15"
-                        value={channel}
-                        onChange={(f) => this.setState({ channel: f.target.value })}
-                    />
-                    <textarea
-                        rows="1" cols="40"
-                        value={messageToChannel}
-                        onChange={(f) => this.setState({ messageToChannel: f.target.value })} />
-                    <button className="pure-button" onClick={() => {
-                        let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
-                            channel + "\", \"message\":\"" + messageToChannel + "\"}";
-                        dispatch({ type: send, payload: newMessage2 });
-                    }}
-                    disabled={disconnected}>
-                        send
-                    </button >
+                    <div>
+                        <Field name="channel" component="input" type="text" value={channel} />
+                    </div>
+                    <div>
+                        <Field name="messageToChannel" component="input" type="text"
+                            value={messageToChannel} />
+                    </div>
+                    <div>
+                        <button className="pure-button" type="submit"
+                            disabled={disconnected}>
+                            send
+                        </button >
+                    </div>
                     <hr />
                     <div id="messagesOnChannelPage">Messages:
                         <ul>{m}</ul>
                     </div>
                     <hr />
-                </div>
+                </form>
             </div>
         );
     }
 }
+const onSubmit = ({ channel, messageToChannel }, dispatch) => {
+    let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
+        channel + "\", \"message\":\"" + messageToChannel + "\"}";
+    dispatch({ type: send, payload: newMessage2 });
+};
+
 
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
@@ -64,7 +68,11 @@ const mapStateToProps = (state) => ({
 });
 ChannelPage.propTypes = {
     disconnected: PropTypes.bool,
-    dispatch: PropTypes.func,
+    handleSubmit: PropTypes.func,
     received: PropTypes.array
 };
+ChannelPage = reduxForm({
+    form: 'profile',
+    onSubmit
+})(ChannelPage);
 export default connect(mapStateToProps)(ChannelPage);
