@@ -41,7 +41,7 @@ const onSubmit = ({ firstname }, dispatch) => {
     dispatch(push("/dashboard"));
 };
 const mapStateToProps = (state) => ({
-    firstname: state.reducer.firstname,
+    firstname: state.profile.firstname,
     connected: state.websocket.connected
 });
 Login.propTypes = {

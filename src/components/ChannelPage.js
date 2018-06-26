@@ -56,8 +56,8 @@ class ChannelPage extends Component {
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
     disconnected: !state.websocket.connected,
-    workspace: state.reducer.workspace,
-    joined: state.reducer.joined,
+    workspace: state.profile.workspace,
+    joined: state.profile.joined,
     users: state.users.users,
     channels: state.channels.channels,
     received: state.received.received

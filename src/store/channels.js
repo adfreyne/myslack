@@ -17,7 +17,9 @@ export const reducer = (state = initialState, action) => {
                     return state;
                 }
             }
+            break;
         default:
             return state;
     }
+    return state;
 };

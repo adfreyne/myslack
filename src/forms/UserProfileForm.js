@@ -11,7 +11,7 @@ class UserProfileForm extends PureComponent {
         return (
             <div id="userprofile">
                 <div>
-                    <img src="https://png.icons8.com/color/50/000000/magritte.png" width="200px" height="200px" />
+                    <img src="https://png.icons8.com/color/50/000000/magritte.png" alt="profile" width="200px" height="200px" />
                 </div>
                 <div><h3>About you:</h3>
                     <ul>
@@ -68,18 +68,18 @@ const onSubmit = ({ firstname, lastname, residence, age, interests }, dispatch) 
         update(firstname, lastname, residence, age, interests));
 };
 const mapStateToProps = (state) => ({
-    initialValues: state.reducer,
-    firstname: state.reducer.firstname,
-    lastname: state.reducer.lastname,
-    residence: state.reducer.residence,
-    age: state.reducer.age,
-    interests: state.reducer.interests
+    initialValues: state.profile,
+    firstname: state.profile.firstname,
+    lastname: state.profile.lastname,
+    residence: state.profile.residence,
+    age: state.profile.age,
+    interests: state.profile.interests
 });
 UserProfileForm.propTypes = {
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     residence: PropTypes.string,
-    age: PropTypes.number,
+    age: PropTypes.string,
     interests: PropTypes.array,
     handleSubmit: PropTypes.func
 };

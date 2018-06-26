@@ -33,8 +33,9 @@ export const reducer = (state = initialState, action) => {
                     received: [...state.received, cmd]
                 };
             }
-
+            break;
         default:
             return state;
     }
+    return state;
 };

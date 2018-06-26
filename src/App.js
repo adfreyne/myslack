@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import UserProfileForm from './forms/UserProfileForm';
 import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './components/ChannelPage';
+import PropTypes from 'prop-types';
 
 const Login = () => <div><LoginForm /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
@@ -46,4 +47,7 @@ const mapStateToProps = (state) => ({
     connected: state.messages.connected
 
 });
+App.propTypes = {
+    connected: PropTypes.bool
+};
 export default connect(mapStateToProps)(App);
