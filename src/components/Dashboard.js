@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import WebSocket from './Websocket';
 import { push } from 'redux-first-routing';
+import PropTypes from 'prop-types';
+
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels, received, dispatch, send } = this.props;//eslint-disable-line
+        const { workspace, joined, users, channels, received, dispatch } = this.props;
 
         let c = channels.map((channel, index) => (
             <li key={index}>
@@ -58,4 +60,12 @@ const mapStateToProps = (state) => ({
     activeChannel: state.channels.activeChannel,
     received: state.received.received
 });
+Dashboard.propTypes = {
+    workspace: PropTypes.string,
+    joined: PropTypes.array,
+    users: PropTypes.array,
+    channels: PropTypes.array,
+    received: PropTypes.array,
+    dispatch: PropTypes.func
+};
 export default connect(mapStateToProps)(Dashboard);

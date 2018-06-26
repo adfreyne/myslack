@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 class ChannelPage extends Component {
     constructor () {
         super();
-        this.state = { channel: '', input2: '' };
+        this.state = { channel: '', messageToChannel: '' };
     }
 
     render () {
         const {
-            channel, input2
+            channel, messageToChannel
         } = this.state;
 
         const {
@@ -32,11 +32,11 @@ class ChannelPage extends Component {
                     />
                     <textarea
                         rows="1" cols="40"
-                        value={input2}
-                        onChange={(f) => this.setState({ input2: f.target.value })} />
+                        value={messageToChannel}
+                        onChange={(f) => this.setState({ messageToChannel: f.target.value })} />
                     <button onClick={() => {
                         let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
-                            channel + "\", \"message\":\"" + input2 + "\"}";
+                            channel + "\", \"message\":\"" + messageToChannel + "\"}";
                         dispatch({ type: send, payload: newMessage2 });
                     }}
                     disabled={disconnected}>

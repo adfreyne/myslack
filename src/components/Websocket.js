@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
+import PropTypes from 'prop-types';
 
 class WebSocket extends Component {
     constructor () {
         super();
-        this.state = { input: '', user: '', channel: '', input2: '', newChannel: '' };
+        this.state = { messageToUser: '', user: '', channel: '', messageToChannel: '', newChannel: '' };
     }
     renderMessage (message, idx) {
         return (
@@ -16,13 +17,13 @@ class WebSocket extends Component {
     }
     render () {
         const {
-            input, user, channel, input2, newChannel
+            messageToUser, user, channel, messageToChannel, newChannel
         } = this.state;
 
         const {
-            dispatch,//eslint-disable-line
-            disconnected,//eslint-disable-line
-            messages//eslint-disable-line
+            dispatch,
+            disconnected,
+            messages
         } = this.props;
 
         return (
@@ -52,11 +53,11 @@ class WebSocket extends Component {
                     />
                     <textarea
                         rows="1" cols="40"
-                        value={input}
-                        onChange={(e) => this.setState({ input: e.target.value })} />
+                        value={messageToUser}
+                        onChange={(e) => this.setState({ messageToUser: e.target.value })} />
                     <button onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"user\":\"" +
-                            user + "\", \"message\":\"" + input + "\"}";
+                            user + "\", \"message\":\"" + messageToUser + "\"}";
                         dispatch({ type: send, payload: newMessage });
                     }}
                     disabled={disconnected}>
@@ -72,11 +73,11 @@ class WebSocket extends Component {
                     />
                     <textarea
                         rows="1" cols="40"
-                        value={input2}
-                        onChange={(e) => this.setState({ input2: e.target.value })} />
+                        value={messageToChannel}
+                        onChange={(e) => this.setState({ messageToChannel: e.target.value })} />
                     <button onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"channel\":\"" +
-                            channel + "\", \"message\":\"" + input2 + "\"}";
+                            channel + "\", \"message\":\"" + messageToChannel + "\"}";
                         dispatch({ type: send, payload: newMessage });
                     }}
                     disabled={disconnected}>
@@ -112,5 +113,10 @@ const mapStateToProps = (state) => ({
     messages: state.messages.log,
     disconnected: !state.websocket.connected
 });
-
+WebSocket.propTypes = {
+    dispatch: PropTypes.func,
+    disconnected: PropTypes.bool,
+    messages: PropTypes.array,
+    handleSubmit: PropTypes.func
+};
 export default connect(mapStateToProps)(WebSocket);
