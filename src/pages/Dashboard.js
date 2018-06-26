@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import WebSocket from './Websocket';
+import WebSocket from '../components/Websocket';
 import { push } from 'redux-first-routing';
 import PropTypes from 'prop-types';
 

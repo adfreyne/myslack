@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import Navigation from './navigation/Navigation';
-import LoginForm from './forms/LoginForm';
-import Dashboard from './components/Dashboard';
-import UserProfileForm from './forms/UserProfileForm';
+import LoginForm from './pages/LoginForm';
+import Dashboard from './pages/Dashboard';
+import UserProfileForm from './pages/UserProfileForm';
 import LoggedInMessage from './components/LoggedInMessage';
-import ChannelPage from './components/ChannelPage';
+import ChannelPage from './pages/ChannelPage';
 import PropTypes from 'prop-types';
 
 const Login = () => <div><LoginForm /></div>;
