@@ -8,13 +8,13 @@ import { reducer as receivedReducer } from './receivedMessages';
 import { reducer as usersOnlineReducer } from './usersOnline';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
-import { profile as profile } from './profile';
+import { profile as profileReducer } from './profile';
 
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
     form: formReducer,
-    reducer: profile,
+    reducer: profileReducer,
     router: routerReducer,
     channels: channelReducer,
     websocket: websocketReducer,

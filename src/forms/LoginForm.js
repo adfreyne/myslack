@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { push } from 'redux-first-routing';
+import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
 
 class Login extends PureComponent {
@@ -36,7 +37,7 @@ class Login extends PureComponent {
 }
 const onSubmit = ({ firstname }, dispatch) => {
     let sendToServer = JSON.stringify({ command: 'name', name: firstname });
-    dispatch({ type: 'WEBSOCKET_SEND', payload: sendToServer });
+    dispatch({ type: send, payload: sendToServer });
     dispatch(push("/dashboard"));
 };
 const mapStateToProps = (state) => ({
