@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
+import PropTypes from 'prop-types';
 
 class ChannelPage extends Component {
     constructor () {
@@ -14,9 +15,9 @@ class ChannelPage extends Component {
         } = this.state;
 
         const {
-            dispatch,//eslint-disable-line
-            disconnected,//eslint-disable-line
-            received//eslint-disable-line
+            dispatch,
+            disconnected,
+            received
         } = this.props;
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
 
@@ -61,5 +62,9 @@ const mapStateToProps = (state) => ({
     channels: state.channels.channels,
     received: state.received.received
 });
-
+ChannelPage.propTypes = {
+    disconnected: PropTypes.bool,
+    dispatch: PropTypes.func,
+    received: PropTypes.array
+};
 export default connect(mapStateToProps)(ChannelPage);

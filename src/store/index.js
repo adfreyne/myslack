@@ -1,4 +1,3 @@
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory, routerReducer, routerMiddleware, startListener } from 'redux-first-routing';
@@ -10,7 +9,6 @@ import { reducer as usersOnlineReducer } from './usersOnline';
 import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { profile as profile } from './profile';
-
 
 const history = createBrowserHistory();
 

@@ -79,7 +79,9 @@ UserProfileForm.propTypes = {
     firstname: PropTypes.string,
     lastname: PropTypes.string,
     residence: PropTypes.string,
-    age: PropTypes.number
+    age: PropTypes.number,
+    interests: PropTypes.array,
+    handleSubmit: PropTypes.func
 };
 UserProfileForm = reduxForm({
     form: 'profile',
