@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class Dashboard extends PureComponent {
     render () {
-        const { workspace, joined, users, channels, received, dispatch } = this.props;
+        const { users, channels, received, dispatch } = this.props;
 
         let c = channels.map((channel, index) => (
             <li key={index}>
@@ -25,15 +25,13 @@ class Dashboard extends PureComponent {
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
                 <div className="pure-g" id="messagesarea">
                     <div className="pure-u-1-4" id="sidebar">
-                        <div><p>Workspace: {workspace}</p><p>Joined on {joined}</p></div>
-                        <hr />
                         <div>Channels:
                             <ul>
                                 {c}
                             </ul>
                         </div>
                         <hr />
-                        <div>Users in your workspace:
+                        <div>Users online:
                             <ul>
                                 {u}
                             </ul>
