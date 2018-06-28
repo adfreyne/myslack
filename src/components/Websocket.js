@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
 
@@ -17,29 +18,29 @@ class WebSocket extends Component {
     }
     render () {
         const {
-            messageToUser, user, channel, messageToChannel, newChannel
+            messageToUser, user, channel, messageToChannel
         } = this.state;
 
         const {
             dispatch,
             disconnected,
-            messages
+            handleSubmit,
+            messages,
+            users
         } = this.props;
 
         return (
             <div className="pure-form">
-                <div>
-                    Make new channel:
-                    <input
-                        rows="1" cols="10"
-                        value={newChannel}
-                        onChange={(e) => this.setState({ newChannel: e.target.value })}
-                    />
-                    <button className="pure-button" onClick={() => {
-                        let newC = "{\"command\": \"join\", \"channel\":\"" + newChannel + "\"}";
-                        dispatch({ type: send, payload: newC });
-                    }}>Make</button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <div>
+
+                        Make new channel:
+                        <Field name="newChannel" component="input" type="text" />
+                        {/* <p>{users}</p> */}
+                        <button type="submit">Add channel</button>
+                    </div>
+                </form>
+                {users}
                 <p />
                 Messages:
                 <hr />
@@ -98,10 +99,23 @@ class WebSocket extends Component {
     }
 }
 
+const onSubmit = ({ newChannel }, dispatch) => {
+    let sendToServer = JSON.stringify({ command: 'join', channel: newChannel });
+    dispatch({ type: send, payload: sendToServer });
+    let not = JSON.stringify({
+        command: 'message',
+        user: 'Adri',
+        message: 'New channel ' + newChannel + ' opened'
+    });
+    dispatch({ type: send, payload: not });
+};
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
     disconnected: !state.websocket.connected,
-    names: state.received.names
+    names: state.received.names,
+    users: state.received.users,
+    channels: state.received.channels
+
 });
 WebSocket.propTypes = {
     dispatch: PropTypes.func,
@@ -109,4 +123,8 @@ WebSocket.propTypes = {
     messages: PropTypes.array,
     handleSubmit: PropTypes.func
 };
+WebSocket = reduxForm({
+    form: 'websocket',
+    onSubmit
+})(WebSocket);
 export default connect(mapStateToProps)(WebSocket);

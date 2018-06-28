@@ -1,4 +1,4 @@
-import { message/*, send, open, close*/ } from './websocket';
+import { message /*send/*, open, close*/ } from './websocket';
 
 const initialState = {
     received: [],
@@ -41,7 +41,7 @@ export const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     received: [...state.received, cmd],
-                    channels: [...state.channels, cmd]
+                    channels: [...state.channels, action.payload.channel]
                 };
             }
             if (action.payload.user && action.payload.message) {

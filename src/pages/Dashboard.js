@@ -51,7 +51,7 @@ class Dashboard extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    channels: state.channels.channels,
+    channels: state.received.channels,
     // activeChannel: state.channels.activeChannel,
     received: state.received.received,
     users: state.received.users
