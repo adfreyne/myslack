@@ -12,5 +12,7 @@ export const reducer = (state = initialState, action) => {
             } else {
                 return state;
             }
-    } return state;
+        default:
+            return state;
+    }
 };

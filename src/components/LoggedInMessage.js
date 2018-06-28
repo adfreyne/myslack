@@ -8,8 +8,8 @@ class LoggedInMessage extends PureComponent {
         let date = new Date();
         let d = date.toDateString();
         if (connected) {
-            return <p id="loggedInAs">{d} - Connected to chat-backend-server </p>;
-        } else return <p>Not connected to chat-backend-server. Run "chat-backend" from Terminal</p>;
+            return <p id="loggedInAs">{d} - Websocket connected </p>;
+        } else return <p>Websocket NOT connected .Run "chat-backend" from Terminal</p>;
     }
 }
 const mapStateToProps = (state) => ({

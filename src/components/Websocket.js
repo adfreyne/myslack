@@ -86,18 +86,7 @@ class WebSocket extends Component {
                 </div>
                 <hr />
                 <hr />
-                <div>Users online:
-                    <button className="pure-button" onClick={() => {
-                        let theUsers = "{\"command\": \"users\"}";
-                        dispatch({ type: send, payload: theUsers });
-                    }}>Show</button>
-                </div>
-                <div>Channels:
-                    <button className="pure-button" onClick={() => {
-                        let theChannels = "{\"command\": \"channels\"}";
-                        dispatch({ type: send, payload: theChannels });
-                    }}>Show</button>
-                </div>
+
                 <div>
                     <p>Websocket activity:</p>
                     <ul id="websocket-activity">
@@ -111,7 +100,8 @@ class WebSocket extends Component {
 
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
-    disconnected: !state.websocket.connected
+    disconnected: !state.websocket.connected,
+    names: state.received.names
 });
 WebSocket.propTypes = {
     dispatch: PropTypes.func,
