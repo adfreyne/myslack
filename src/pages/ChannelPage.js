@@ -4,20 +4,18 @@ import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-
 class ChannelPage extends Component {
     constructor () {
         super();
         this.state = { channel: '', messageToChannel: '' };
     }
-
     render () {
         const {
             channel, messageToChannel
         } = this.state;
 
         const {
-            disconnected,
+            connected,
             received,
             handleSubmit
         } = this.props;
@@ -36,7 +34,7 @@ class ChannelPage extends Component {
                     </div>
                     <div>
                         <button className="pure-button" type="submit"
-                            disabled={disconnected}>
+                            disabled={!connected}>
                             send
                         </button >
                     </div>
@@ -56,23 +54,20 @@ const onSubmit = ({ channel, messageToChannel }, dispatch) => {
     dispatch({ type: send, payload: newMessage2 });
 };
 
-
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
-    disconnected: !state.websocket.connected,
-    workspace: state.profile.workspace,
-    joined: state.profile.joined,
-    users: state.users.users,
+    connected: state.websocket.connected,
+    users: state.received.users,
     channels: state.channels.channels,
     received: state.received.received
 });
 ChannelPage.propTypes = {
-    disconnected: PropTypes.bool,
+    connected: PropTypes.bool,
     handleSubmit: PropTypes.func,
     received: PropTypes.array
 };
 ChannelPage = reduxForm({
-    form: 'profile',
+    form: 'channel',
     onSubmit
 })(ChannelPage);
 export default connect(mapStateToProps)(ChannelPage);

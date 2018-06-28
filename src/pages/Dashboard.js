@@ -51,16 +51,12 @@ class Dashboard extends PureComponent {
     }
 }
 const mapStateToProps = (state) => ({
-    workspace: state.profile.workspace,
-    joined: state.profile.joined,
     channels: state.channels.channels,
-    activeChannel: state.channels.activeChannel,
+    // activeChannel: state.channels.activeChannel,
     received: state.received.received,
     users: state.received.users
 });
 Dashboard.propTypes = {
-    workspace: PropTypes.string,
-    joined: PropTypes.string,
     users: PropTypes.array,
     channels: PropTypes.array,
     received: PropTypes.array,

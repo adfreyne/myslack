@@ -5,8 +5,7 @@ const initialState = {
     lastname: 'De Freyne',
     residence: 'Roosdaal',
     age: '41',
-    interests: ['coding', 'reading', 'film'],
-    users: []
+    interests: ['coding', 'reading', 'film']
 };
 export const update = (firstname, lastname, residence, age, interests) => ({
     type: 'UPDATE',

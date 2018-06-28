@@ -5,7 +5,8 @@ const initialState = {
     id: 0,
     name: '',
     ids: [],
-    users: []
+    users: [],
+    channels: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -32,7 +33,6 @@ export const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     received: [...state.received, cmd],
-                    id: action.payload.id,
                     users: [...state.users, action.payload.name]
                 };
             }
@@ -41,8 +41,7 @@ export const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     received: [...state.received, cmd],
-                    id: action.payload.id,
-                    users: [...state.users, action.payload.name]
+                    channels: [...state.channels, cmd]
                 };
             }
             if (action.payload.user && action.payload.message) {

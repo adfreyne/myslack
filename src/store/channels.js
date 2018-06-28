@@ -13,8 +13,6 @@ export const reducer = (state = initialState, action) => {
                     return {
                         channels: [...state.channels, cmd]
                     };
-                } else {
-                    return state;
                 }
             }
             break;
