@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
+import { loop, Cmd } from 'redux-loop';
 
 class WebSocket extends Component {
     constructor () {
@@ -25,8 +26,7 @@ class WebSocket extends Component {
             dispatch,
             disconnected,
             handleSubmit,
-            messages,
-            users
+            messages
         } = this.props;
 
         return (
@@ -40,7 +40,6 @@ class WebSocket extends Component {
                         <button type="submit">Add channel</button>
                     </div>
                 </form>
-                {users}
                 <p />
                 Messages:
                 <hr />
@@ -102,12 +101,6 @@ class WebSocket extends Component {
 const onSubmit = ({ newChannel }, dispatch) => {
     let sendToServer = JSON.stringify({ command: 'join', channel: newChannel });
     dispatch({ type: send, payload: sendToServer });
-    let not = JSON.stringify({
-        command: 'message',
-        user: 'Adri',
-        message: 'New channel ' + newChannel + ' opened'
-    });
-    dispatch({ type: send, payload: not });
 };
 const mapStateToProps = (state) => ({
     messages: state.messages.log,

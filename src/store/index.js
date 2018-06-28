@@ -6,7 +6,7 @@ import { reducer as messagesReducer } from './messages';
 import { reducer as channelReducer } from './channels';
 import { reducer as receivedReducer } from './receivedMessages';
 import { reducer as usersOnlineReducer } from './usersOnline';
-import thunk from 'redux-thunk';
+//import thunk from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import { profile as profileReducer } from './profile';
 
@@ -27,7 +27,7 @@ const middleware = routerMiddleware(history);
 const middlewareWebsocket = applyMiddleware(websocketMiddleware("ws://localhost:8085/api/stream"));
 
 const store = createStore(rootReducer, composeWithDevTools(
-    applyMiddleware(middleware), applyMiddleware(thunk), middlewareWebsocket
+    applyMiddleware(middleware), /*applyMiddleware(thunk)*/ middlewareWebsocket
 ));
 
 startListener(history, store);
