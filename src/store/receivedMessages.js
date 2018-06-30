@@ -1,4 +1,6 @@
-import { message /*send/*, open, close*/ } from './websocket';
+import { message/*, send/*, open, close*/ } from './websocket';
+// import { loop, Cmd } from 'redux-loop';
+// import { push } from 'redux-first-routing';
 
 const initialState = {
     received: [],
@@ -52,7 +54,9 @@ export const reducer = (state = initialState, action) => {
                 };
             }
             if (action.payload.channel && action.payload.message) {
-                let cmd = "Message on channel " + action.payload.channel + " : " +
+                let date = new Date();
+                let d = date.toLocaleString();
+                let cmd = d + " - Message on channel " + action.payload.channel + " : " +
                     action.payload.message + " from " + action.payload.id;
                 return {
                     ...state,

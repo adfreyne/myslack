@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import WebSocket from '../components/Websocket';
+import Websocket from '../components/Websocket';
 import { push } from 'redux-first-routing';
 import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
+import { send } from '../store/websocket';
 
 
 class Dashboard extends PureComponent {
     render () {
-        const { users, channels, received, dispatch } = this.props;
+        const { users, channels, received, dispatch, handleSubmit } = this.props;
 
         let c = channels.map((channel, index) => (
             <li key={index}>
@@ -19,7 +21,8 @@ class Dashboard extends PureComponent {
             </li >
         ));
         let u = users.map((user, index) => <li key={index}>{user}</li>);
-        let m = received.map((mess, index) => <li key={index}>{mess}</li>);
+        let m = received.map((mess, index) => <li className="messageListItem" key={index}>{mess}</li>);
+
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -30,27 +33,43 @@ class Dashboard extends PureComponent {
                                 {c}
                             </ul>
                         </div>
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                Add:
+                                <Field name="newChannel" component="input" type="text" />
+                                <button type="submit">Add channel</button>
+                            </div>
+                        </form>
+                        <p />
                         <hr />
+
                         <div>Users online:
                             <ul>
                                 {u}
                             </ul>
                         </div>
                         <hr />
+
+                    </div>
+                    <div className="pure-u-3-4" id="messagelist">
                         <div>
                             <ul>{m}</ul>
                         </div>
                         <hr />
-                    </div>
-                    <div className="pure-u-3-4" id="messagelist">
-                        <WebSocket />
+                        <Websocket />
                     </div>
                 </div>
             </div >
         );
     }
 }
+const onSubmit = ({ newChannel }, dispatch) => {
+    let sendToServer = JSON.stringify({ command: 'join', channel: newChannel });
+    dispatch({ type: send, payload: sendToServer });
+};
+
 const mapStateToProps = (state) => ({
+    firstname: state.received.firstname,
     channels: state.received.channels,
     // activeChannel: state.channels.activeChannel,
     received: state.received.received,
@@ -62,4 +81,8 @@ Dashboard.propTypes = {
     received: PropTypes.array,
     dispatch: PropTypes.func
 };
+Dashboard = reduxForm({
+    form: 'newchannel',
+    onSubmit
+})(Dashboard);
 export default connect(mapStateToProps)(Dashboard);

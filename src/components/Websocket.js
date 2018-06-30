@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
-import { loop, Cmd } from 'redux-loop';
 
 class WebSocket extends Component {
     constructor () {
@@ -25,22 +23,12 @@ class WebSocket extends Component {
         const {
             dispatch,
             disconnected,
-            handleSubmit,
             messages
         } = this.props;
 
         return (
             <div className="pure-form">
-                <form onSubmit={handleSubmit}>
-                    <div>
 
-                        Make new channel:
-                        <Field name="newChannel" component="input" type="text" />
-                        {/* <p>{users}</p> */}
-                        <button type="submit">Add channel</button>
-                    </div>
-                </form>
-                <p />
                 Messages:
                 <hr />
                 <hr />
@@ -98,10 +86,7 @@ class WebSocket extends Component {
     }
 }
 
-const onSubmit = ({ newChannel }, dispatch) => {
-    let sendToServer = JSON.stringify({ command: 'join', channel: newChannel });
-    dispatch({ type: send, payload: sendToServer });
-};
+
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
     disconnected: !state.websocket.connected,
@@ -116,8 +101,5 @@ WebSocket.propTypes = {
     messages: PropTypes.array,
     handleSubmit: PropTypes.func
 };
-WebSocket = reduxForm({
-    form: 'websocket',
-    onSubmit
-})(WebSocket);
+
 export default connect(mapStateToProps)(WebSocket);
