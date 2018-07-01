@@ -8,6 +8,7 @@ class WebSocket extends Component {
         super();
         this.state = { messageToUser: '', user: '', channel: '', messageToChannel: '', newChannel: '' };
     }
+
     renderMessage (message, idx) {
         return (
             <li key={idx}>
@@ -28,9 +29,6 @@ class WebSocket extends Component {
 
         return (
             <div className="pure-form">
-
-                Messages:
-                <hr />
                 <hr />
                 <div>
                     Send message to user:
@@ -74,8 +72,7 @@ class WebSocket extends Component {
                 </div>
                 <hr />
                 <hr />
-
-                <div>
+                <div id="socketMessagesList">
                     <p>Websocket activity:</p>
                     <ul id="websocket-activity">
                         {messages.map(this.renderMessage)}
@@ -85,7 +82,6 @@ class WebSocket extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => ({
     messages: state.messages.log,

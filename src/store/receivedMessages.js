@@ -31,7 +31,8 @@ export const reducer = (state = initialState, action) => {
                 };
             }
             if (action.payload.command === 'name') {
-                let cmd = action.payload.name + " came online.";
+                let time = new Date().toLocaleTimeString();
+                let cmd = time + ": " + action.payload.name + " came online.";
                 return {
                     ...state,
                     received: [...state.received, cmd],

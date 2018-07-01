@@ -21,7 +21,7 @@ class Dashboard extends PureComponent {
             </li >
         ));
         let m = received.map((mess, index) => <li className="messageListItem" key={index}>{mess}</li>);
-
+        let time = new Date().toDateString();
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -50,7 +50,7 @@ class Dashboard extends PureComponent {
                     </div>
                     <div className="pure-u-3-4" id="messagelist">
                         <div>
-                            <ul>{m}</ul>
+                            <ul>{time}{m}</ul>
                         </div>
                         <hr />
                         <Websocket />

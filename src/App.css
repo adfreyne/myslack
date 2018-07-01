@@ -105,5 +105,6 @@ li {
 .messageListItem{
   background-color: rgb(255, 255, 255);
   margin: 4px;
-  padding: 2px
+  padding: 2px;
+  width: -moz-max-content;
 }
