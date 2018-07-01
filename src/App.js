@@ -9,14 +9,14 @@ import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './pages/ChannelPage';
 import PropTypes from 'prop-types';
 
-const Login = () => <div><LoginForm /></div>;
+const LoginPage = () => <div><LoginForm /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
 const UserProfile = () => <div><UserProfilePage /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
 
 const routingTable = {
-    '/': <Login />,
+    '/': <LoginPage />,
     '/dashboard': <DashBoard />,
     '/userprofile': <UserProfile />,
     '/channels': <Channels />

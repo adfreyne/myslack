@@ -1,13 +1,12 @@
 import { message/*, send/*, open, close*/ } from './websocket';
 // import { loop, Cmd } from 'redux-loop';
 // import { push } from 'redux-first-routing';
-
 const initialState = {
     received: [],
     id: 0,
     name: '',
-    ids: [],
     users: [],
+    usernameIds: [],
     channels: [],
     selectedUser: '',
     selectedChannel: ''
@@ -27,15 +26,21 @@ export const reducer = (state = initialState, action) => {
                 switch (action.payload.command) {
                     case 'connect':
                         let newId = "New connection: id: " + action.payload.id;
-                        let newConnectionId = action.payload.id;
+                        let usernameId = action.payload.id.toString();
                         return {
                             ...state,
                             received: [...state.received, newId],
-                            ids: [...state.ids, newConnectionId]
+                            usernameIds: [...state.usernameIds, usernameId]
+                        };
+                    case 'disconnect':
+                        let disconnected = action.payload.id + " is disconnected.";
+                        return {
+                            ...state,
+                            received: [...state.received, disconnected]
                         };
                     case 'name':
-                        let time = new Date().toLocaleTimeString();
-                        let newOnline = time + ": " + action.payload.name + " came online.";
+                        let timeUserOnline = new Date().toLocaleTimeString();
+                        let newOnline = timeUserOnline + ": " + action.payload.name + " came online.";
                         return {
                             ...state,
                             received: [...state.received, newOnline],
@@ -48,25 +53,16 @@ export const reducer = (state = initialState, action) => {
                             received: [...state.received, newChannel],
                             channels: [...state.channels, action.payload.channel]
                         };
+                    case 'message':
+                        let timeMessage = new Date().toLocaleTimeString();
+                        let mess = action.payload.message + " from " + action.payload.id + " - " + timeMessage;
+                        return {
+                            ...state,
+                            received: [...state.received, mess]
+                        };
                     default:
                         return state;
                 }
-            }
-            if (action.payload.user && action.payload.message) {
-                let cmd = action.payload.user + " sends : " + action.payload.message;
-                return {
-                    ...state,
-                    received: [...state.received, cmd]
-                };
-            }
-            if (action.payload.channel && action.payload.message) {
-                let time = new Date().toLocaleTimeString();
-                let mess = action.payload.channel + " : " +
-                    action.payload.message + " from " + action.payload.id + " - " + time;
-                return {
-                    ...state,
-                    received: [...state.received, mess]
-                };
             }
             break;
         default:

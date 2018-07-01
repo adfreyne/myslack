@@ -5,7 +5,6 @@ import { Field, reduxForm } from 'redux-form';
 import { push } from 'redux-first-routing';
 import { send } from '../store/websocket';
 
-
 class ChannelListComponent extends PureComponent {
     render () {
         const { channels, dispatch, handleSubmit } = this.props;
@@ -22,9 +21,7 @@ class ChannelListComponent extends PureComponent {
         return (
             <div>
                 <div>Channels:
-                    <ul>
-                        {c}
-                    </ul>
+                    <ul>{c}</ul>
                 </div>
                 <form onSubmit={handleSubmit} className="pure-form">
                     <div>
@@ -33,7 +30,6 @@ class ChannelListComponent extends PureComponent {
                         <button type="submit" className="pure-button">Add channel</button>
                     </div>
                 </form>
-
             </div >
         );
     }

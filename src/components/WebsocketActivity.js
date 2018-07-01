@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class WebSocketActivity extends Component {
-    constructor () {
-        super();
-    }
+    // constructor () {
+    //     super();
+    // }
     renderMessage (message, idx) {
         return (
             <li key={idx}>
