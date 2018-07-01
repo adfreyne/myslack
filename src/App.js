@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import Navigation from './navigation/Navigation';
 import LoginForm from './pages/LoginForm';
 import Dashboard from './pages/Dashboard';
-import UserProfileForm from './pages/UserProfileForm';
+import UserProfilePage from './pages/UserProfilePage';
 import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './pages/ChannelPage';
 import PropTypes from 'prop-types';
 
 const Login = () => <div><LoginForm /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
-const UserProfile = () => <div><UserProfileForm /></div>;
+const UserProfile = () => <div><UserProfilePage /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
 
