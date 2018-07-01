@@ -76,7 +76,8 @@ Dashboard.propTypes = {
     users: PropTypes.array,
     channels: PropTypes.array,
     received: PropTypes.array,
-    dispatch: PropTypes.func
+    dispatch: PropTypes.func,
+    handleSubmit: PropTypes.func
 };
 Dashboard = reduxForm({
     form: 'newchannel',

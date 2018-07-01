@@ -48,6 +48,7 @@ const mapStateToProps = (state) => ({
 
 });
 App.propTypes = {
-    connected: PropTypes.bool
+    connected: PropTypes.bool,
+    location: PropTypes.string
 };
 export default connect(mapStateToProps)(App);

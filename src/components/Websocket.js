@@ -2,19 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
+import WebsocketActivity from './WebsocketActivity';
 
 class WebSocket extends Component {
     constructor () {
         super();
         this.state = { messageToUser: '', user: '', channel: '', messageToChannel: '', newChannel: '' };
-    }
-
-    renderMessage (message, idx) {
-        return (
-            <li key={idx}>
-                <pre>{message}</pre>
-            </li>
-        );
     }
     render () {
         const {
@@ -23,8 +16,7 @@ class WebSocket extends Component {
 
         const {
             dispatch,
-            disconnected,
-            messages
+            disconnected
         } = this.props;
 
         return (
@@ -71,13 +63,8 @@ class WebSocket extends Component {
                     </button>
                 </div>
                 <hr />
-                <hr />
-                <div id="socketMessagesList">
-                    <p>Websocket activity:</p>
-                    <ul id="websocket-activity">
-                        {messages.map(this.renderMessage)}
-                    </ul>
-                </div>
+
+                <WebsocketActivity />
             </div>
         );
     }
