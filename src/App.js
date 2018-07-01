@@ -24,7 +24,7 @@ const routingTable = {
 
 class App extends Component {
     render () {
-        const { location } = this.props;//eslint-disable-line
+        const { location } = this.props;
         let page;
         const route = routingTable[location];
         if (!route) {

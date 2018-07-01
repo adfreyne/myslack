@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { send } from '../store/websocket';
 
-
 class Dashboard extends PureComponent {
     render () {
         const { users, channels, received, dispatch, handleSubmit } = this.props;
 
+        let u = users.map((user, index) => <li key={index}>{user}</li>);
         let c = channels.map((channel, index) => (
             <li key={index}>
                 <button className="pure-button" onClick={() => {
@@ -20,7 +20,6 @@ class Dashboard extends PureComponent {
                 </button>
             </li >
         ));
-        let u = users.map((user, index) => <li key={index}>{user}</li>);
         let m = received.map((mess, index) => <li className="messageListItem" key={index}>{mess}</li>);
 
         return (
@@ -28,6 +27,12 @@ class Dashboard extends PureComponent {
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
                 <div className="pure-g" id="messagesarea">
                     <div className="pure-u-1-4" id="sidebar">
+                        <div>Users online:
+                            <ul>
+                                {u}
+                            </ul>
+                        </div>
+                        <hr />
                         <div>Channels:
                             <ul>
                                 {c}
@@ -42,14 +47,6 @@ class Dashboard extends PureComponent {
                         </form>
                         <p />
                         <hr />
-
-                        <div>Users online:
-                            <ul>
-                                {u}
-                            </ul>
-                        </div>
-                        <hr />
-
                     </div>
                     <div className="pure-u-3-4" id="messagelist">
                         <div>

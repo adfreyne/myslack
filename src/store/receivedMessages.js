@@ -54,13 +54,12 @@ export const reducer = (state = initialState, action) => {
                 };
             }
             if (action.payload.channel && action.payload.message) {
-                let date = new Date();
-                let d = date.toLocaleString();
-                let cmd = d + " - Message on channel " + action.payload.channel + " : " +
-                    action.payload.message + " from " + action.payload.id;
+                let time = new Date().toLocaleTimeString();
+                let mess = action.payload.channel + " : " +
+                    action.payload.message + " from " + action.payload.id + " - " + time;
                 return {
                     ...state,
-                    received: [...state.received, cmd]
+                    received: [...state.received, mess]
                 };
             }
             break;
