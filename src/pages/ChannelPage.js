@@ -67,7 +67,7 @@ ChannelPage.propTypes = {
     received: PropTypes.array
 };
 ChannelPage = reduxForm({
-    form: 'channel',
+    form: 'channelMessage',
     onSubmit
 })(ChannelPage);
 export default connect(mapStateToProps)(ChannelPage);

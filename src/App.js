@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import Navigation from './navigation/Navigation';
-import LoginForm from './pages/LoginForm';
+import LoginPage from './pages/LoginPage';
 import Dashboard from './pages/Dashboard';
 import UserProfilePage from './pages/UserProfilePage';
 import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './pages/ChannelPage';
 import PropTypes from 'prop-types';
 
-const LoginPage = () => <div><LoginForm /></div>;
+const Login = () => <div><LoginPage /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
 const UserProfile = () => <div><UserProfilePage /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
 
 const routingTable = {
-    '/': <LoginPage />,
+    '/': <Login />,
     '/dashboard': <DashBoard />,
     '/userprofile': <UserProfile />,
     '/channels': <Channels />

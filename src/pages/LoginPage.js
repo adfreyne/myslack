@@ -5,7 +5,7 @@ import { push } from 'redux-first-routing';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
 
-class Login extends PureComponent {
+class LoginPage extends PureComponent {
     constructor () {
         super();
         this.state = { firstname: '' };
@@ -38,15 +38,15 @@ const mapStateToProps = (state) => ({
     firstname: state.profile.firstname,
     connected: state.websocket.connected
 });
-Login.propTypes = {
+LoginPage.propTypes = {
     connected: PropTypes.bool,
     handleSubmit: PropTypes.func
 };
-Login = reduxForm({
+LoginPage = reduxForm({
     form: 'login',
     onSubmit
-})(Login);
+})(LoginPage);
 
-Login = connect(mapStateToProps)(Login);
+LoginPage = connect(mapStateToProps)(LoginPage);
 
-export default Login;
+export default LoginPage;
