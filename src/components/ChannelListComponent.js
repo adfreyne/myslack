@@ -10,7 +10,6 @@ class ChannelListComponent extends PureComponent {
     render () {
         const { channels, dispatch, handleSubmit } = this.props;
 
-
         let c = channels.map((channel, index) => (
             <li key={index}>
                 <button className="pure-button" onClick={() => {
@@ -29,7 +28,7 @@ class ChannelListComponent extends PureComponent {
                 </div>
                 <form onSubmit={handleSubmit} className="pure-form">
                     <div>
-            Add:
+                        Add:
                         <Field name="newChannel" component="input" type="text" />
                         <button type="submit" className="pure-button">Add channel</button>
                     </div>

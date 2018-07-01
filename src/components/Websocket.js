@@ -43,12 +43,10 @@ class WebSocket extends Component {
                 <div>
                     Send message to channel:
                     <input
-                        rows="1" cols="15"
                         value={channel}
                         onChange={(e) => this.setState({ channel: e.target.value })}
                     />
                     <input
-                        rows="1" cols="40"
                         value={messageToChannel}
                         onChange={(e) => this.setState({ messageToChannel: e.target.value })} />
                     <button className="pure-button" onClick={() => {

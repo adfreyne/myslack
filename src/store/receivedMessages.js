@@ -8,7 +8,9 @@ const initialState = {
     name: '',
     ids: [],
     users: [],
-    channels: []
+    channels: [],
+    selectedUser: '',
+    selectedChannel: ''
 };
 
 export const reducer = (state = initialState, action) => {
@@ -21,31 +23,34 @@ export const reducer = (state = initialState, action) => {
                     received: [...state.received, cmd]
                 };
             }
-            if (action.payload.command === "connect") {
-                let cmd = "New connection: id: " + action.payload.id;
-                let newConnectionId = action.payload.id;
-                return {
-                    ...state,
-                    received: [...state.received, cmd],
-                    ids: [...state.ids, newConnectionId]
-                };
-            }
-            if (action.payload.command === 'name') {
-                let time = new Date().toLocaleTimeString();
-                let cmd = time + ": " + action.payload.name + " came online.";
-                return {
-                    ...state,
-                    received: [...state.received, cmd],
-                    users: [...state.users, action.payload.name]
-                };
-            }
-            if (action.payload.command === 'join') {
-                let cmd = "Channel " + action.payload.channel + " added.";
-                return {
-                    ...state,
-                    received: [...state.received, cmd],
-                    channels: [...state.channels, action.payload.channel]
-                };
+            if (action.payload.command) {
+                switch (action.payload.command) {
+                    case 'connect':
+                        let newId = "New connection: id: " + action.payload.id;
+                        let newConnectionId = action.payload.id;
+                        return {
+                            ...state,
+                            received: [...state.received, newId],
+                            ids: [...state.ids, newConnectionId]
+                        };
+                    case 'name':
+                        let time = new Date().toLocaleTimeString();
+                        let newOnline = time + ": " + action.payload.name + " came online.";
+                        return {
+                            ...state,
+                            received: [...state.received, newOnline],
+                            users: [...state.users, action.payload.name]
+                        };
+                    case 'join':
+                        let newChannel = "Channel " + action.payload.channel + " added.";
+                        return {
+                            ...state,
+                            received: [...state.received, newChannel],
+                            channels: [...state.channels, action.payload.channel]
+                        };
+                    default:
+                        return state;
+                }
             }
             if (action.payload.user && action.payload.message) {
                 let cmd = action.payload.user + " sends : " + action.payload.message;

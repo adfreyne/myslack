@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 class UsersListComponent extends PureComponent {
     render () {
         const { users } = this.props;
-        let u = users.map((user, index) => <li key={index}>{user}</li>);
+        let u = users.map((user, index) => (<li key={index}>
+            <button className="pure-button">{user}
+            </button>
+        </li >));
         return (
             <div className="pure-u-1-4" id="sidebar">
                 <div>Users online:
