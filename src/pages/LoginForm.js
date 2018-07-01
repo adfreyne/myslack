@@ -12,22 +12,11 @@ class Login extends PureComponent {
     }
     render () {
         const { handleSubmit, connected } = this.props;
-        //let sendPayload = "{ \"command\":\"name\",\"name\":\"Adriaan\" }";
         return (
             <div >
-                {/* <button onClick=
-                    {() => {
-                        dispatch({ type: 'WEBSOCKET_SEND', payload: sendPayload });
-                        dispatch(push("/dashboard"));
-                    }}
-                disabled={!connected}
-                >
-                    Connect to back-end chat-box as Adriaan
-                </button> */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="pure-form">
                     <div>State your loginname:
-                        <Field name="firstname" component="input" type="text"
-                            rows="1" cols="12" />
+                        <Field name="firstname" component="input" type="text" />
                         <button
                             className="pure-button pure-button-primary"
                             type="submit"

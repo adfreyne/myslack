@@ -25,12 +25,10 @@ class WebSocket extends Component {
                 <div>
                     Send message to user:
                     <input
-                        rows="1" cols="10"
                         value={user}
                         onChange={(e) => this.setState({ user: e.target.value })}
                     />
                     <input
-                        rows="1" cols="40"
                         value={messageToUser}
                         onChange={(e) => this.setState({ messageToUser: e.target.value })} />
                     <button className="pure-button" onClick={() => {

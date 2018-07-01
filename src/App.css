@@ -55,12 +55,12 @@ body {
   text-align: center
 } */
 
-button {
-  background-color: #e21010;
+/* button {
+  background-color: #4544a0;
   color: white;
   font-size: 18px
 
-}
+} */
 button:hover {
   background-color: #f0d296
 
