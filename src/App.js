@@ -15,13 +15,12 @@ const DashBoard = () => <div><Dashboard /></div>;
 const UserProfile = () => <div><UserProfilePage /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
-const toUserMessage = (props) => {
-    console.log(props);
-    return <p>This is a toUserMessage page for {props.channelId}.</p>;
-};
-const toChannelMessage = ({ channelId }) =>
-    (<div><p>This is an toChannelMessage page for {channelId}.</p>
-        <ChannelPage /></div>);
+// const toUserMessage = (props) => {
+//     return <p>This is a toUserMessage page for {props.channelId}.</p>;
+// };
+// const toChannelMessage = ({ channelId }) =>
+//     (<div><p>This is an toChannelMessage page for {channelId}.</p>
+//         <ChannelPage /></div>);
 
 class App extends Component {
     render () {
@@ -34,8 +33,8 @@ class App extends Component {
                     '/dashboard': DashBoard,
                     '/userprofile': UserProfile,
                     '/channels': Channels,
-                    '/channels/:channelId/toUserMessage': toUserMessage,
-                    '/channels/:channelId/toChannelMessage': toChannelMessage,
+                    // '/channels/:channelId/toUserMessage': toUserMessage,
+                    // '/channels/:channelId/toChannelMessage': toChannelMessage,
                     'error': NotFound
                 }} />
                 <hr />

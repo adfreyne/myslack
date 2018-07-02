@@ -11,7 +11,8 @@ class ChannelPage extends Component {
     }
     render () {
         const {
-            messageToChannel
+            messageToChannel,
+            channel
         } = this.state;
 
         const {
@@ -26,9 +27,9 @@ class ChannelPage extends Component {
             <div id="channelpage">
                 <form className="pure-form" onSubmit={handleSubmit}>
                     Send message to {activatedChannel}:
-                    {/* <div>
-                        <Field name="channel" component="input" type="text" value={channel}>{activatedChannel}</Field>
-                    </div> */}
+                    <div>
+                        <Field name="channel" component="input" type="text" value={channel} />
+                    </div>
                     <div>
                         <Field name="messageToChannel" component="input" type="text"
                             value={messageToChannel} />
@@ -49,7 +50,7 @@ class ChannelPage extends Component {
         );
     }
 }
-const onSubmit = (channel, { messageToChannel }, dispatch) => {
+const onSubmit = ({ channel, messageToChannel }, dispatch) => {
     let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
         channel + "\", \"message\":\"" + messageToChannel + "\"}";
     dispatch({ type: send, payload: newMessage2 });
