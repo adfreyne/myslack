@@ -11,23 +11,24 @@ class ChannelPage extends Component {
     }
     render () {
         const {
-            channel, messageToChannel
+            messageToChannel
         } = this.state;
 
         const {
             connected,
             received,
-            handleSubmit
+            handleSubmit,
+            activatedChannel
         } = this.props;
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
 
         return (
             <div id="channelpage">
                 <form className="pure-form" onSubmit={handleSubmit}>
-                    Send message to channel:
-                    <div>
-                        <Field name="channel" component="input" type="text" value={channel} />
-                    </div>
+                    Send message to {activatedChannel}:
+                    {/* <div>
+                        <Field name="channel" component="input" type="text" value={channel}>{activatedChannel}</Field>
+                    </div> */}
                     <div>
                         <Field name="messageToChannel" component="input" type="text"
                             value={messageToChannel} />
@@ -48,7 +49,7 @@ class ChannelPage extends Component {
         );
     }
 }
-const onSubmit = ({ channel, messageToChannel }, dispatch) => {
+const onSubmit = (channel, { messageToChannel }, dispatch) => {
     let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
         channel + "\", \"message\":\"" + messageToChannel + "\"}";
     dispatch({ type: send, payload: newMessage2 });
@@ -59,12 +60,14 @@ const mapStateToProps = (state) => ({
     connected: state.websocket.connected,
     users: state.received.users,
     channels: state.channels.channels,
-    received: state.received.received
+    received: state.received.received,
+    activatedChannel: state.initChannel.activatedChannel
 });
 ChannelPage.propTypes = {
     connected: PropTypes.bool,
     handleSubmit: PropTypes.func,
-    received: PropTypes.array
+    received: PropTypes.array,
+    activatedChannel: PropTypes.string
 };
 ChannelPage = reduxForm({
     form: 'channelMessage',

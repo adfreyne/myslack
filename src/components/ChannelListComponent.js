@@ -12,7 +12,7 @@ class ChannelListComponent extends PureComponent {
         let c = channels.map((channel, index) => (
             <li key={index}>
                 <button className="pure-button" onClick={() => {
-                    dispatch(push("/channels"));
+                    dispatch({ type: 'INIT', payload: channel });
                 }}
                 >{channel}
                 </button>
