@@ -8,35 +8,37 @@ import UserProfilePage from './pages/UserProfilePage';
 import LoggedInMessage from './components/LoggedInMessage';
 import ChannelPage from './pages/ChannelPage';
 import PropTypes from 'prop-types';
+import Router from './navigation/Router';
 
 const Login = () => <div><LoginPage /></div>;
 const DashBoard = () => <div><Dashboard /></div>;
 const UserProfile = () => <div><UserProfilePage /></div>;
 const Channels = () => <div><ChannelPage /></div>;
 const NotFound = () => <p>Error! 404</p>;
-
-const routingTable = {
-    '/': <Login />,
-    '/dashboard': <DashBoard />,
-    '/userprofile': <UserProfile />,
-    '/channels': <Channels />
+const toUserMessage = (props) => {
+    console.log(props);
+    return <p>This is a toUserMessage page for {props.channelId}.</p>;
 };
+const toChannelMessage = ({ channelId }) =>
+    (<div><p>This is an toChannelMessage page for {channelId}.</p>
+        <ChannelPage /></div>);
 
 class App extends Component {
     render () {
-        const { location } = this.props;
-        let page;
-        const route = routingTable[location];
-        if (!route) {
-            page = <NotFound />;
-        } else {
-            page = route;
-        }
         return (
             <div className="App">
                 <Navigation id="navbar" />
                 <LoggedInMessage />
-                {page}
+                <Router routes={{
+                    '/': Login,
+                    '/dashboard': DashBoard,
+                    '/userprofile': UserProfile,
+                    '/channels': Channels,
+                    '/channels/:channelId/toUserMessage': toUserMessage,
+                    '/channels/:channelId/toChannelMessage': toChannelMessage,
+                    'error': NotFound
+                }} />
+                <hr />
             </div>
         );
     }
