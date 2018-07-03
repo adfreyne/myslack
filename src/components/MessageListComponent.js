@@ -8,7 +8,6 @@ class MessageListComponent extends PureComponent {
         let m = received.map((mess, index) => <li className="messageListItem" key={index}>{mess}</li>);
         let time = new Date().toDateString();
         return (
-
             <div className="pure-u-3-4" id="messagelist">
                 <div>
                     <ul>{time}{m}</ul>

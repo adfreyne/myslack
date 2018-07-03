@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 class UsersListComponent extends PureComponent {
     render () {
-        const { users } = this.props;
+        const { users, dispatch } = this.props;
         let u = users.map((user, index) => (<li key={index}>
-            <button className="pure-button">{user}
+            <button className="pure-button" onClick={() => {
+                dispatch({ type: 'TO_USER_PROFILE', payload: user });
+            }}>{user}
             </button>
         </li >));
         return (
@@ -25,7 +27,9 @@ const mapStateToProps = (state) => ({
     users: state.received.users
 });
 UsersListComponent.propTypes = {
-    users: PropTypes.array
+    users: PropTypes.array,
+    dispatch: PropTypes.func
+
 };
 
 export default connect(mapStateToProps)(UsersListComponent);

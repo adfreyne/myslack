@@ -10,6 +10,7 @@ import { reducer as formReducer } from 'redux-form';
 import { profile as profileReducer } from './profile';
 import { combineReducers, install } from 'redux-loop';
 import { reducer as initChannelReducer } from './initChannel';
+import { reducer as toUserProfileReducer } from './toUserProfile';
 
 const history = createBrowserHistory();
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     messages: messagesReducer,
     received: receivedReducer,
     users: usersOnlineReducer,
-    initChannel: initChannelReducer
+    initChannel: initChannelReducer,
+    toUserProfile: toUserProfileReducer
 });
 
 const middlewareWebsocket = applyMiddleware(websocketMiddleware("ws://localhost:8085/api/stream"));
