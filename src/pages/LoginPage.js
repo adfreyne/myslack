@@ -31,8 +31,9 @@ class LoginPage extends PureComponent {
 }
 const onSubmit = ({ firstname }, dispatch) => {
     let sendToServer = JSON.stringify({ command: 'name', name: firstname });
-    dispatch({ type: send, payload: sendToServer });
-    if (firstname !== undefined) {
+
+    if (firstname === 'Adri') {
+        dispatch({ type: send, payload: sendToServer });
         dispatch(push("/dashboard"));
     }
 };
