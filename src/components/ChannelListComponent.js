@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { push } from 'redux-first-routing';
 import { send } from '../store/websocket';
 
 class ChannelListComponent extends PureComponent {

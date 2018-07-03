@@ -11,7 +11,7 @@ class LoginPage extends PureComponent {
         this.state = { firstname: '' };
     }
     render () {
-        const { handleSubmit, connected } = this.props;
+        const { handleSubmit, connected, firstname } = this.props;
         return (
             <div >
                 <form onSubmit={handleSubmit} className="pure-form">
@@ -20,7 +20,8 @@ class LoginPage extends PureComponent {
                         <button
                             className="pure-button pure-button-primary"
                             type="submit"
-                            disabled={!connected}>
+                            disabled={!connected && !firstname}
+                            required>
                             Log in
                         </button>
                     </div>
@@ -40,7 +41,8 @@ const mapStateToProps = (state) => ({
 });
 LoginPage.propTypes = {
     connected: PropTypes.bool,
-    handleSubmit: PropTypes.func
+    handleSubmit: PropTypes.func,
+    firstname: PropTypes.string
 };
 LoginPage = reduxForm({
     form: 'login',
