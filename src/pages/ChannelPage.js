@@ -8,20 +8,19 @@ import { Field, reduxForm } from 'redux-form';
 class ChannelPage extends Component {
     constructor () {
         super();
-        this.state = { channel: '', messageToChannel: '' };
+        this.state = { channel: '', text: '' };
     }
     render () {
         const {
             //messageToChannel,
-            channel
+            channel, text
         } = this.state;
 
         const {
             connected,
             received,
             handleSubmit,
-            activeChannel,
-            text
+            activeChannel
         } = this.props;
         let m = received.map((mess, index) => <li key={index}>{mess}</li>);
         return (
@@ -29,10 +28,10 @@ class ChannelPage extends Component {
                 <form className="pure-form" onSubmit={handleSubmit}>
                     Send message to {activeChannel}:
                     {<div>
-                        <Field name="channel" component="input" type="text" value={channel} />
+                        <Field placeholder="channel" name="channel" component="input" type="text" value={channel} />
                     </div>}
                     <div>
-                        <Field name="messageToChannel" component="input" type="text"
+                        <Field placeholder="message" name="messageToChannel" component="input" type="text"
                             value={text} />
                     </div>
                     <div>
@@ -51,17 +50,11 @@ class ChannelPage extends Component {
         );
     }
 }
-const onSubmit = ({ activeChannel, text }, dispatch) => {
-    let sendToChannel = "{\"command\": \"message\", \"channel\":\"" +
-        activeChannel + "\", \"message\":\"" + text + "\"}";
-    //JSON.stringify({ command: "message", channel: activeChannel, message: text });
-
-    dispatch({ type: send, payload: sendToChannel });
+const onSubmit = ({ channel, text }, dispatch) => {
+    let newMessage = "{\"command\": \"message\", \"channel\":\"" +
+        channel + "\", \"message\":\"" + text + "\"}";
+    dispatch({ type: send, payload: newMessage });
 };
-// let newMessage2 = "{\"command\": \"message\", \"channel\":\"" +
-//     channel + "\", \"message\":\"" + messageToChannel + "\"}";
-// dispatch({ type: send, payload: newMessage2 });
-
 
 const mapStateToProps = (state) => ({
     messages: state.messages.log,
@@ -69,8 +62,7 @@ const mapStateToProps = (state) => ({
     users: state.received.users,
     channels: state.channels.channels,
     received: state.received.received,
-    activeChannel: state.initChannel.activeChannel,
-    text: state.initChannel.text
+    activeChannel: state.initChannel.activeChannel
 });
 ChannelPage.propTypes = {
     connected: PropTypes.bool,

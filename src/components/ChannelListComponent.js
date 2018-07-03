@@ -25,7 +25,7 @@ class ChannelListComponent extends PureComponent {
                 <form onSubmit={handleSubmit} className="pure-form">
                     <div>
                         Add:
-                        <Field name="newChannel" component="input" type="text" />
+                        <Field placeholder="start channelname with #" name="newChannel" component="input" type="text" />
                         <button type="submit" className="pure-button">Add channel</button>
                     </div>
                 </form>

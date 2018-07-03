@@ -11,17 +11,16 @@ class LoginPage extends PureComponent {
         this.state = { firstname: '' };
     }
     render () {
-        const { handleSubmit, connected, firstname } = this.props;
+        const { handleSubmit, connected } = this.props;
         return (
             <div >
                 <form onSubmit={handleSubmit} className="pure-form">
                     <div>State your loginname:
-                        <Field name="firstname" component="input" type="text" />
+                        <Field placeholder="a login is required" name="firstname" component="input" type="text" />
                         <button
                             className="pure-button pure-button-primary"
                             type="submit"
-                            disabled={!connected && !firstname}
-                            required>
+                            disabled={!connected}>
                             Log in
                         </button>
                     </div>
@@ -33,10 +32,11 @@ class LoginPage extends PureComponent {
 const onSubmit = ({ firstname }, dispatch) => {
     let sendToServer = JSON.stringify({ command: 'name', name: firstname });
     dispatch({ type: send, payload: sendToServer });
-    dispatch(push("/dashboard"));
+    if (firstname !== undefined) {
+        dispatch(push("/dashboard"));
+    }
 };
 const mapStateToProps = (state) => ({
-    firstname: state.profile.firstname,
     connected: state.websocket.connected
 });
 LoginPage.propTypes = {
