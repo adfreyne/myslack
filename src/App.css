@@ -10,13 +10,11 @@
 }
 #sidebar{
   display: relative;
-  width: 30%;
   background-color:#e95e02
 
 }
 #messagelist{
   display: relative;
-  width: 70%;
   background-color: #ffb625;
   color: black
 }

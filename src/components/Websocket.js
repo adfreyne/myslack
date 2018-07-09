@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { send } from '../store/websocket';
 import PropTypes from 'prop-types';
-import WebsocketActivity from './WebsocketActivity';
+//import WebsocketActivity from './WebsocketActivity';
 
 class WebSocket extends Component {
     constructor () {
@@ -23,13 +23,15 @@ class WebSocket extends Component {
             <div className="pure-form">
                 <hr />
                 <div>
-                    Send message to user:
-                    <input
+                    <h5>Send message to user:</h5>
+                    <input className="pure-u-1-8"
+                        placeholder="username"
                         value={user}
                         onChange={(e) => this.setState({ user: e.target.value })}
                     />
-                    <input
+                    <input className="pure-u-7-8"
                         value={messageToUser}
+                        placeholder="message"
                         onChange={(e) => this.setState({ messageToUser: e.target.value })} />
                     <button className="pure-button" onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"user\":\"" +
@@ -41,13 +43,15 @@ class WebSocket extends Component {
                     </button>
                 </div>
                 <div>
-                    Send message to channel:
-                    <input
+                    <h5>Send message to channel:</h5>
+                    <input className="pure-u-1-8"
+                        placeholder="channel"
                         value={channel}
                         onChange={(e) => this.setState({ channel: e.target.value })}
                     />
-                    <input
+                    <input className="pure-u-7-8"
                         value={messageToChannel}
+                        placeholder="message"
                         onChange={(e) => this.setState({ messageToChannel: e.target.value })} />
                     <button className="pure-button" onClick={() => {
                         let newMessage = "{\"command\": \"message\", \"channel\":\"" +
@@ -60,7 +64,7 @@ class WebSocket extends Component {
                 </div>
                 <hr />
 
-                <WebsocketActivity />
+                {/*<WebsocketActivity />*/}
             </div>
         );
     }

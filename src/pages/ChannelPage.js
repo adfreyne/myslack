@@ -24,12 +24,12 @@ class ChannelPage extends Component {
             <div className="pure-form">
                 <hr />
                 <div>
-                    Send message to channel:
-                    <input
+                    <h5>Send message to channel:</h5>
+                    <input className="pure-u-1-8"
                         value={channel}
                         onChange={(e) => this.setState({ channel: e.target.value })}
                     />
-                    <input
+                    <input className="pure-u-3-8"
                         value={messageToChannel}
                         onChange={(e) => this.setState({ messageToChannel: e.target.value })} />
                     <button className="pure-button" onClick={() => {

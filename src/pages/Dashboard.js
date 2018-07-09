@@ -7,7 +7,7 @@ import UsersListComponent from '../components/UsersListComponent';
 import MessageListComponent from '../components/MessageListComponent';
 
 class Dashboard extends PureComponent {
-    render () {
+    render() {
         return (
             <div>
                 <header id="header">Searchable Log of All Conversation and Knowledge</header>
@@ -18,7 +18,7 @@ class Dashboard extends PureComponent {
                         <ChannelListComponent />
                         <p />
                     </div>
-                    <div className="pure-u-1-4" id="messagelist">
+                    <div className="pure-u-3-4" id="messagelist">
                         <MessageListComponent />
                         <hr />
                         <Websocket />
